@@ -1,22 +1,25 @@
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from "react";
 
-const App = () => {
+// Componenti per le varie sezioni della Home Page
+import Navbar from "./components/Navbar";
+import IntroSection from "./components/IntroSection";
+import ServicesOverview from "./components/ServicesOverview";
+
+import CallToAction from "./components/CallToAction";
+import Footer from "./components/Footer";
+
+const Home = () => {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <Services />
-      <About />
-      <Contact />
+    <div className="home">
+      <Navbar />
+      <main>
+        <IntroSection />
+        <ServicesOverview />
+        <CallToAction />
+      </main>
       <Footer />
     </div>
   );
 };
 
-export default App;
+export default Home;
