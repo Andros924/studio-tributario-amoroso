@@ -1,25 +1,21 @@
-import React from "react";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Services from './components/Services';
+import About from './components/About';
+import Blog from './components/Blog';
+import Contact from './components/Contact';
 
-// Componenti per le varie sezioni della Home Page
-import Navbar from "./components/Navbar";
-import IntroSection from "./components/IntroSection";
-import ServicesOverview from "./components/ServicesOverview";
-
-import CallToAction from "./components/CallToAction";
-import Footer from "./components/Footer";
-
-const Home = () => {
+const App = () => {
   return (
-    <div className="home">
-      <Navbar />
-      <main>
-        <IntroSection />
-        <ServicesOverview />
-        <CallToAction />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
   );
 };
 
-export default Home;
+export default App;
