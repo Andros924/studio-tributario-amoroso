@@ -35,11 +35,11 @@ const Footer = () => {
                         <ul className="space-y-2">
                             <li className="flex items-center">
                                 <Mail size={16} className="mr-2" />
-                                <a href="mailto:info@studioamoroso.it" className="hover:text-white transition-colors duration-300">info@studioamoroso.it</a>
+                                <a href="mailto:studiotrib.amoroso@gmail.com" className="hover:text-white transition-colors duration-300">studiotrib.amoroso@gmail.com</a>
                             </li>
                             <li className="flex items-center">
                                 <Phone size={16} className="mr-2" />
-                                <a href="tel:+390123456789" className="hover:text-white transition-colors duration-300">+39 012 345 6789</a>
+                                <a href="tel:+393890536285" className="hover:text-white transition-colors duration-300">+39 389 053 32 85</a>
                             </li>
                             <li className="flex items-center">
                                 <MapPin size={16} className="mr-2" />
