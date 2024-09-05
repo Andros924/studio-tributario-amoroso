@@ -3,18 +3,19 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <header className="bg-blue-700 text-white p-5 flex justify-between items-center">
-      <div className="text-2xl font-bold">Studio Tributario Amoroso</div>
-      <nav>
-        <ul className="flex space-x-6">
-          <li><Link to="/services" className="hover:underline">Servizi</Link></li>
-          <li><Link to="/about" className="hover:underline">Chi Siamo</Link></li>
-          <li><Link to="/blog" className="hover:underline">Blog</Link></li>
-          <li><Link to="/contact" className="hover:underline">Contatti</Link></li>
-        </ul>
-      </nav>
-    </header>
+    <nav className="bg-darkred p-4">
+      <div className="container mx-auto flex justify-between">
+        <Link to="/" className="text-white font-bold text-xl">Tributarista Palermo</Link>
+        <div className="flex space-x-4">
+          <Link to="/" className="text-white">Home</Link>
+          <Link to="/chi-siamo" className="text-white">Chi Siamo</Link>
+          <Link to="/servizi" className="text-white">Servizi</Link>
+          <Link to="/blog" className="text-white">Blog</Link>
+          <Link to="/contatti" className="text-white">Contatti</Link>
+        </div>
+      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;

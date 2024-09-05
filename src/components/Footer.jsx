@@ -1,64 +1,40 @@
 import React from 'react';
-import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-    return (
-        <footer className="bg-gray-900 text-gray-300 py-12">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">Studio Tributario Amoroso</h3>
-                        <p className="mb-4">Soluzioni fiscali personalizzate per aziende e privati.</p>
-                        <div className="flex space-x-4">
-                            <a href="https://www.facebook.com" className="text-gray-400 hover:text-white transition-colors duration-300">
-                                <Facebook size={20} />
-                            </a>
-                            <a href="https://www.twitter.com" className="text-gray-400 hover:text-white transition-colors duration-300">
-                                <Twitter size={20} />
-                            </a>
-                            <a href="https://www.linkedin.com" className="text-gray-400 hover:text-white transition-colors duration-300">
-                                <Linkedin size={20} />
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">Servizi</h3>
-                        <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-white transition-colors duration-300">Consulenza Fiscale</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-300">Pianificazione Tributaria</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-300">Contabilità Aziendale</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-300">Dichiarazioni dei Redditi</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">Contatti</h3>
-                        <ul className="space-y-2">
-                            <li className="flex items-center">
-                                <Mail size={16} className="mr-2" />
-                                <a href="mailto:studiotrib.amoroso@gmail.com" className="hover:text-white transition-colors duration-300">studiotrib.amoroso@gmail.com</a>
-                            </li>
-                            <li className="flex items-center">
-                                <Phone size={16} className="mr-2" />
-                                <a href="tel:+393890536285" className="hover:text-white transition-colors duration-300">+39 389 053 32 85</a>
-                            </li>
-                            <li className="flex items-center">
-                                <MapPin size={16} className="mr-2" />
-                                <span>Via Roma, 123, 00100 Roma</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
-                    <p>&copy; {new Date().getFullYear()} Studio Tributario Amoroso. Tutti i diritti riservati.</p>
-                    <div className="mt-2 space-x-4">
-                        <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors duration-300">Termini di Servizio</a>
-                        <a href="#" className="hover:text-white transition-colors duration-300">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
-}
+  return (
+    <footer className="bg-darkred text-white py-6">
+      <div className="container mx-auto text-center">
+        <p className="mb-4">
+          © {new Date().getFullYear()} Studio Tributarista Palermo. Tutti i diritti riservati.
+        </p>
+
+        <div className="flex justify-center space-x-4">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-lightred">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
+              {/* Icona di Facebook */}
+              <path d="M22.675 0h-21.35c-..." />
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-lightred">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
+              {/* Icona di LinkedIn */}
+              <path d="M19.5 3h-15c-1.379..." />
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-lightred">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
+              {/* Icona di Twitter */}
+              <path d="M22.23 5.924c-0.817..." />
+            </svg>
+          </a>
+        </div>
+
+        <div className="mt-4">
+          <p>Contattaci: <a href="mailto:info@studio-tributarista-palermo.it" className="text-lightred hover:underline">info@studio-tributarista-palermo.it</a></p>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
