@@ -11,8 +11,6 @@ const DettaglioArticolo = () => {
   useEffect(() => {
     const fetchArticolo = async () => {
       try {
-        // Simula una chiamata API per recuperare i dettagli dell'articolo
-        // In un'applicazione reale, sostituisci questo con una vera chiamata API
         const response = await fetch(`/api/articoli/${id}`);
         if (!response.ok) {
           throw new Error('Articolo non trovato');
@@ -53,7 +51,7 @@ const DettaglioArticolo = () => {
             />
           )}
           <div className="p-8">
-            <h1 className="text-4xl font-bold text-darkred mb-4">{articolo.titolo}</h1>
+            <h1 className="text-4xl font-bold text-blue-900 mb-4">{articolo.titolo}</h1> {/* Colore blu scuro per il titolo */}
             <div className="flex items-center text-gray-600 mb-6">
               <CalendarIcon className="w-5 h-5 mr-2" />
               <span className="mr-4">{new Date(articolo.data).toLocaleDateString()}</span>
@@ -72,12 +70,12 @@ const DettaglioArticolo = () => {
         {/* Sezione tag */}
         {articolo.tags && articolo.tags.length > 0 && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-darkred mb-4">Tag</h2>
+            <h2 className="text-xl font-semibold text-blue-900 mb-4">Tag</h2> {/* Colore blu scuro per il sottotitolo */}
             <div className="flex flex-wrap gap-2">
               {articolo.tags.map((tag, index) => (
                 <span 
                   key={index} 
-                  className="bg-lightred text-white px-3 py-1 rounded-full text-sm"
+                  className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm"  
                 >
                   {tag}
                 </span>
