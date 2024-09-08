@@ -49,12 +49,14 @@ const Contatti = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-12">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-gray-700 mb-12">Contattaci</h1>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-700 mb-12">
+          Contattaci
+        </h1>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Form di contatto */}
-          <div className="bg-white shadow-lg rounded-lg p-8">
+          <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-blue-900 mb-6">Inviaci un messaggio</h2>
 
             {/* Notifica di successo */}
@@ -111,7 +113,7 @@ const Contatti = () => {
           </div>
 
           {/* Informazioni di contatto */}
-          <div className="bg-white shadow-lg rounded-lg p-8">
+          <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-blue-900 mb-6">I nostri contatti</h2>
             <div className="space-y-4">
               <div className="flex items-start">

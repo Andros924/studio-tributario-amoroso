@@ -23,18 +23,22 @@ const BlogPost = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="text-center py-10 text-gray-200">Caricamento in corso...</div>; // Testo grigio chiaro
+    return <div className="text-center py-10 text-gray-200">Caricamento in corso...</div>;
   }
 
   if (!post) {
-    return <div className="text-center py-10 text-gray-700">Articolo non trovato.</div>; // Testo grigio chiaro
+    return <div className="text-center py-10 text-gray-700">Articolo non trovato.</div>;
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold text-gray-700">{post.title}</h1> {/* Titolo in bianco */}
-      <p className="text-gray-700">{new Date(post.created_at).toLocaleDateString()}</p> {/* Data in grigio più scuro */}
-      <div className="prose prose-lg max-w-full text-gray-700"> {/* Contenuto in grigio medio */}
+    <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700">
+        {post.title}
+      </h1>
+      <p className="text-gray-500 text-sm md:text-base mt-2">
+        {new Date(post.created_at).toLocaleDateString()}
+      </p>
+      <div className="prose prose-lg max-w-full text-gray-700 mt-6">
         {post.content}
       </div>
     </div>
