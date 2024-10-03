@@ -57,8 +57,8 @@ const Footer = () => {
 
         {/* Linea divisoria */}
         <div className="border-t border-gray-700 mt-8 pt-6 text-center">
-          <p>© {new Date().getFullYear()} Studio Tributarista Palermo. Tutti i diritti riservati.</p>
-          <p className="text-sm">Partita IVA: 12345678901</p>
+          <p>© {new Date().getFullYear()} Studio Tributario a Palermo. Tutti i diritti riservati.</p>
+          <p className="text-sm">Partita IVA: 06955710824</p>
         </div>
       </div>
     </footer>

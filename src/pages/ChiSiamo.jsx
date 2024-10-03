@@ -11,7 +11,7 @@ const ChiSiamo = () => {
         <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8 mb-12">
           <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-4">La Nostra Storia</h2>
           <p className="text-gray-700 mb-4">
-            Fondata nel [Anno], la nostra società di consulenza tributaria si è affermata come punto di riferimento
+            Fondata nel 2021, il nostro studio di consulenza tributaria si è affermata come punto di riferimento
             per privati e aziende in cerca di soluzioni fiscali affidabili e innovative. Con anni di esperienza
             nel settore, abbiamo costruito una reputazione basata sulla competenza, l'integrità e l'attenzione
             al cliente.
