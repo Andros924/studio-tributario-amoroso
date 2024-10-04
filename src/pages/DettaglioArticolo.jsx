@@ -1,39 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CalendarIcon, UserIcon, ClockIcon } from 'lucide-react';
+import { articoliEvidenza } from '../components/Data';
 
 const DettaglioArticolo = () => {
   const { id } = useParams();
-  const [articolo, setArticolo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchArticolo = async () => {
-      try {
-        const response = await fetch(`/api/articoli/${id}`);
-        if (!response.ok) {
-          throw new Error('Articolo non trovato');
-        }
-        const data = await response.json();
-        setArticolo(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    fetchArticolo();
-  }, [id]);
-
-  if (loading) {
-    return <div className="text-center py-10">Caricamento in corso...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center py-10 text-red-600">{error}</div>;
-  }
+  const articolo = articoliEvidenza.find(article => article.id === parseInt(id));
 
   if (!articolo) {
     return <div className="text-center py-10">Articolo non trovato.</div>;
@@ -51,10 +23,10 @@ const DettaglioArticolo = () => {
             />
           )}
           <div className="p-8">
-            <h1 className="text-4xl font-bold text-blue-900 mb-4">{articolo.titolo}</h1> {/* Colore blu scuro per il titolo */}
+            <h1 className="text-4xl font-bold text-blue-900 mb-4">{articolo.titolo}</h1>
             <div className="flex items-center text-gray-600 mb-6">
               <CalendarIcon className="w-5 h-5 mr-2" />
-              <span className="mr-4">{new Date(articolo.data).toLocaleDateString()}</span>
+              <span className="mr-4">{articolo.data}</span>
               <UserIcon className="w-5 h-5 mr-2" />
               <span className="mr-4">{articolo.autore}</span>
               <ClockIcon className="w-5 h-5 mr-2" />
@@ -67,10 +39,9 @@ const DettaglioArticolo = () => {
           </div>
         </article>
 
-        {/* Sezione tag */}
         {articolo.tags && articolo.tags.length > 0 && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-blue-900 mb-4">Tag</h2> {/* Colore blu scuro per il sottotitolo */}
+            <h2 className="text-xl font-semibold text-blue-900 mb-4">Tag</h2>
             <div className="flex flex-wrap gap-2">
               {articolo.tags.map((tag, index) => (
                 <span 
@@ -83,9 +54,6 @@ const DettaglioArticolo = () => {
             </div>
           </div>
         )}
-
-        {/* Sezione articoli correlati */}
-        {/* Qui puoi aggiungere una sezione per gli articoli correlati se necessario */}
       </div>
     </div>
   );

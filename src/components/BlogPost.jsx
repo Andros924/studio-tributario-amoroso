@@ -1,30 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
+import { articoliEvidenza } from './Data';
 
 const BlogPost = () => {
-  const { id } = useParams(); 
-  const [post, setPost] = useState(null); 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(`/api/posts/${id}`); 
-        const data = await response.json();
-        setPost(data);
-        setLoading(false); 
-      } catch (error) {
-        console.error("Errore durante il recupero dell'articolo:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [id]);
-
-  if (loading) {
-    return <div className="text-center py-10 text-gray-200">Caricamento in corso...</div>;
-  }
+  const { id } = useParams();
+  const post = articoliEvidenza.find(article => article.id === parseInt(id));
 
   if (!post) {
     return <div className="text-center py-10 text-gray-700">Articolo non trovato.</div>;
@@ -32,15 +12,16 @@ const BlogPost = () => {
 
   return (
     <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700">
-        {post.title}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 text-center mb-4">
+        {post.titolo}
       </h1>
-      <p className="text-gray-500 text-sm md:text-base mt-2">
-        {new Date(post.created_at).toLocaleDateString()}
+      <p className="text-gray-500 text-sm md:text-base mt-2 text-center mb-8">
+        {post.data} - {post.autore}
       </p>
-      <div className="prose prose-lg max-w-full text-gray-700 mt-6">
-        {post.content}
-      </div>
+      <div 
+        className="prose prose-lg max-w-full text-gray-700 mt-6 text-center space-y-6"
+        dangerouslySetInnerHTML={{ __html: post.contenuto }}
+      />
     </div>
   );
 };

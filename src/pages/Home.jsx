@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
+import { articoliEvidenza } from '../components/Data';  // Importiamo il nuovo articolo
 
 const Home = () => {
   // Esempio di servizi offerti
@@ -10,13 +11,6 @@ const Home = () => {
     "Pianificazione fiscale",
     "Contabilità aziendale",
     "Assistenza in caso di controlli fiscali"
-  ];
-
-  // Esempio di articoli in evidenza
-  const articoliEvidenza = [
-    { id: 1, titolo: "Novità fiscali 2024", excerpt: "Le principali modifiche alla normativa fiscale per l'anno in corso." },
-    { id: 2, titolo: "Come ottimizzare le detrazioni fiscali", excerpt: "Consigli pratici per massimizzare i benefici fiscali per privati e aziende." },
-    { id: 3, titolo: "Guida al regime forfettario", excerpt: "Tutto ciò che c'è da sapere sul regime agevolato per le partite IVA." }
   ];
 
   return (
