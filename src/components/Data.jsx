@@ -1,27 +1,53 @@
 export const articoliEvidenza = [
-    {
-      id: 1,
-      titolo: "Ravvedimento speciale per chi aderisce al concordato preventivo biennale",
-      autore: "Alessandro Amoroso",
-      data: "4 ottobre 2024",
-      excerpt: "Il Senato ha recentemente approvato la conversione in legge del Decreto Legge Omnibus (DL n.113/2024), introducendo un regime di ravvedimento speciale per i contribuenti che applicano gli ISA e aderiscono al concordato preventivo biennale (CPB).",
-      contenuto: `
-        <p>Il Senato ha recentemente approvato la conversione in legge del Decreto Legge Omnibus (DL n.113/2024), introducendo un regime di ravvedimento speciale per i contribuenti che applicano gli Indicatori Sintetici di Affidabilità fiscale (ISA) e che aderiranno al concordato preventivo biennale (CPB) entro il 31 ottobre 2024.</p>
-        
-        <p>Questa nuova misura offre ai contribuenti la possibilità di regolarizzare la propria posizione fiscale per gli anni dal 2018 al 2022, versando un'imposta sostitutiva calcolata in base al loro punteggio ISA. Il pagamento può essere effettuato in un'unica soluzione entro il 31 marzo 2025 o rateizzato fino a 24 mesi.</p>
-        
-        <p>Tra i vantaggi del ravvedimento speciale figura una sorta di "scudo" contro gli accertamenti basati su presunzioni semplici, a meno che non intervengano specifiche condizioni come l'applicazione di misure cautelari o il rinvio a giudizio per determinati reati fiscali.</p>
-        
-        <p>Tuttavia, il provvedimento non è privo di criticità. Chi non aderisce al CPB o ne decade sarà soggetto a controlli fiscali più intensi. Inoltre, le soglie per l'applicazione delle sanzioni accessorie, come la sospensione della partita IVA, sono state dimezzate per questi soggetti.</p>
-        
-        <p>È importante sottolineare che questa misura non può essere considerata un condono fiscale tout court. Piuttosto, si configura come un'opportunità sia per i contribuenti che per lo Stato, mirata a far emergere parte del reddito non dichiarato e garantire entrate certe per l'Erario.</p>
-        
-        <p>Il provvedimento prevede anche una proroga dei termini di accertamento fino al 31 dicembre 2027 per chi aderisce al ravvedimento speciale, e fino al 31 dicembre 2025 per tutti coloro che aderiscono al CPB, anche senza optare per il ravvedimento.</p>
-        
-        <p>In conclusione, mentre il ravvedimento speciale offre vantaggi significativi, i contribuenti dovranno valutare attentamente la propria situazione fiscale prima di aderire, considerando sia i benefici che i potenziali rischi associati a questa nuova opportunità.</p>
+  {
+    id: 1,
+    titolo:
+      "Ravvedimento speciale: un'opportunità per i contribuenti ISA che aderiscono al Concordato Preventivo Biennale?",
+    autore: "Alessandro Amoroso",
+    data: "4 ottobre 2024",
+    excerpt:
+      "Il Decreto Omnibus, approvato dal Senato lo scorso 1° ottobre, introduce una novità rilevante nel panorama fiscale italiano: il ravvedimento speciale per i contribuenti che hanno applicato gli indici sintetici di affidabilità fiscale (ISA) e che aderiscono al concordato preventivo biennale (CPB) entro il prossimo 31 ottobre.",
+    contenuto: `
+       <p> Il Decreto Omnibus, approvato dal Senato lo scorso 1° ottobre, introduce una novità rilevante nel panorama fiscale italiano: il ravvedimento speciale per i contribuenti che hanno applicato gli indici sintetici di affidabilità fiscale (ISA) e che aderiscono al concordato preventivo biennale (CPB) entro il prossimo 31 ottobre.</p><br>
+
+<p><strong>Cos'è il ravvedimento speciale?</strong></p><br>
+
+<p>Si tratta di una misura che consente ai contribuenti di regolarizzare la propria posizione fiscale per gli anni dal 2018 al 2022, versando un'imposta sostitutiva calcolata in base al loro punteggio ISA. In pratica, è un'opportunità per chi ha commesso errori o omissioni nel passato di sanare la propria posizione senza incorrere nelle sanzioni previste dalla legge.</p><br>
+
+<p><strong>Quali sono i vantaggi?</strong></p><br>
+
+<p>-Pagamento rateale: L'imposta sostitutiva può essere pagata in un'unica soluzione o rateizzata in 24 mesi.<br>
+-Liberatoria dagli accertamenti: In teoria, il pagamento dell'imposta sostitutiva dovrebbe liberare il contribuente dagli accertamenti fiscali per i periodi coperti.<br>
+-Opportunità per chi ha difficoltà economiche: Il CPB è uno strumento pensato per aiutare le imprese in difficoltà a risanarsi.</p><br>
+
+<p><strong>Quali sono gli svantaggi?</strong></p><br>
+
+<p>- Condizioni ostative: Non tutti possono accedere al ravvedimento speciale. Ad esempio, sono esclusi coloro che hanno già ricevuto notifiche di accertamenti fiscali.<br>
+- Nessun rimborso in caso di decadenza: Se il contribuente non rispetta le condizioni del ravvedimento, le somme versate non saranno restituite.<br>
+- Dubbi sulla natura condonistica: Alcuni esperti ritengono che questa misura possa essere considerata una forma di condono fiscale, sebbene il governo la definisca un'opportunità di regolarizzazione.<br>
+<br>
+<p><strong>Come funziona?</strong></p><br>
+
+<p>Per aderire al ravvedimento speciale è necessario:</p><br>
+
+<p>- Adesione al CPB: Entro il 31 ottobre 2024 bisogna presentare domanda di adesione al concordato preventivo biennale.<br>
+- Versamento dell'imposta sostitutiva: Il pagamento può essere effettuato in un'unica soluzione o ratealmente.<br>
+- Assenza di notifiche: Non devono essere stati notificati atti di accertamento fiscale prima del pagamento.<br>
+<br>
+<p><strong>Le sanzioni</strong></p><br>
+
+<p>Per chi non aderisce al CPB o ne decade, sono previste sanzioni più severe e un'intensificazione dei controlli fiscali.</p><br>
+
+<p><strong>Perché è importante?</strong></p><br>
+
+<p>Questa misura rappresenta un tentativo del governo di conciliare la necessità di risanare le finanze pubbliche con quella di aiutare le imprese in difficoltà. Tuttavia, solleva anche diverse perplessità, soprattutto riguardo alla sua natura condonistica.<p><br>
+
+<p><strong>Conclusioni</strong></p><br>
+
+<p>Il ravvedimento speciale è un'opportunità per i contribuenti ISA che si trovano in difficoltà, ma va valutata attentamente caso per caso. È fondamentale rivolgersi a un professionista per comprendere appieno le implicazioni di questa scelta e verificare se si possiedono i requisiti per accedere a questa misura.</p>
       `,
-      tempoLettura: 5,
-      immagine: "/images/ravvedimento.jpg",
-      tags: ["ravvedimento", "fisco", "concordato preventivo"]
-    }
-  ];
+    tempoLettura: 5,
+    immagine: "/images/ravvedimento.jpg",
+    tags: ["ravvedimento", "fisco", "concordato preventivo"],
+  },
+];
