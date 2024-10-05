@@ -13,7 +13,16 @@ const BlogList = () => {
         {articoliEvidenza.length > 0 ? (
           articoliEvidenza.map((post) => (
             <div key={post.id} className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-blue-900 mb-4">
+              {post.immagine && (
+                <div className="w-full h-48">
+                  <img 
+                    src={post.immagine} 
+                    alt={post.titolo} 
+                    className="object-cover w-full h-full rounded-lg" 
+                  />
+                </div>
+              )}
+              <h2 className="text-2xl font-semibold text-blue-900 mt-4 mb-4">
                 {post.titolo}
               </h2>
               <p className="text-gray-700 mb-4">

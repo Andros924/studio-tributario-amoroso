@@ -1,3 +1,6 @@
+import immagineRavvedimento from "../assets/images/ravvedimento.jpg";
+import collabfamiliari from "../assets/images/collabfamiliari.jpg"
+
 export const articoliEvidenza = [
   {
     id: 1,
@@ -46,8 +49,64 @@ export const articoliEvidenza = [
 
 <p>Il ravvedimento speciale è un'opportunità per i contribuenti ISA che si trovano in difficoltà, ma va valutata attentamente caso per caso. È fondamentale rivolgersi a un professionista per comprendere appieno le implicazioni di questa scelta e verificare se si possiedono i requisiti per accedere a questa misura.</p>
       `,
-    tempoLettura: 5,
-    immagine: "/images/ravvedimento.jpg",
+    tempoLettura: 2,
+    immagine: immagineRavvedimento,
     tags: ["ravvedimento", "fisco", "concordato preventivo"],
+  },
+  {
+    id: 2,
+    titolo: "Nuova scadenza per i contributi dei collaboratori familiari",
+    autore: "Alessandro Amoroso",
+    data: "4 ottobre 2024",
+    excerpt:
+      "I datori di lavoro che impiegano collaboratori familiari come colf, badanti e baby-sitter devono prestare attenzione a una scadenza imminente: entro il 10 ottobre 2024 dovranno versare i contributi relativi al terzo trimestre dell'anno.",
+    contenuto: `
+       <p>I datori di lavoro che impiegano collaboratori familiari come colf, badanti e baby-sitter devono prestare attenzione a una scadenza imminente: entro il 10 ottobre 2024 dovranno versare i contributi relativi al terzo trimestre dell'anno.</p> <br>
+
+<p><strong>Cosa cambia rispetto al passato?</p></strong><br>
+
+<p>L’INPS, con la circolare n. 23 del 29 gennaio 2024, ha aggiornato le tabelle con gli importi dei contributi dovuti per l'anno in corso. Questi importi sono stati adeguati in base alla variazione dell’indice ISTAT dei prezzi al consumo.</p><br>
+
+<p><strong>Come calcolare i contributi?</strong></p><br>
+
+<p>Il calcolo dei contributi dipende da diversi fattori:</p><br>
+
+<p><strong>- Tipo di contratto:</strong> A tempo indeterminato o determinato. </p><br>
+<p><strong>- Orario lavorativo settimanale:</strong> Fino a 24 ore o superiore. </p><br>
+<p><strong>- Retribuzione oraria:</strong> Sulla base di diverse fasce di reddito.</p><br>
+
+<p>L’INPS mette a disposizione tabelle dettagliate che indicano l’importo esatto del contributo orario da versare in base a queste variabili.</p><br>
+
+<p><strong>Modalità di pagamento</p></strong><br>
+
+<p>I datori di lavoro possono effettuare il versamento dei contributi tramite:</p><br>
+
+<p><strong>- Portale dei pagamenti INPS: </strong> Online, in modo semplice e sicuro.</p><br>
+<p><strong>- Avviso di pagamento PagoPA: </strong> Presso banche, uffici postali e altri prestatori di servizi di pagamento aderenti.</p><br>
+<p><strong>- App IO: </strong> L’applicazione mobile dell’INPS permette di effettuare pagamenti in modo rapido e intuitivo.</p><br>
+
+<p><strong>Attenzione alle scadenze</p></strong><br>
+
+<p>È fondamentale rispettare le scadenze previste dall’INPS. Il mancato pagamento dei contributi può comportare sanzioni amministrative.</p><br>
+
+<p><strong>Cosa succede in caso di cessazione del rapporto di lavoro?</p></strong><br>
+
+<p>Se il rapporto di lavoro con il collaboratore familiare cessa durante il trimestre, il contributo deve essere versato entro 10 giorni dalla data di cessazione.</p><br>
+
+<p><strong>Consigli utili</p></strong><br>
+
+<p><strong>- Conservare tutta la documentazione: </strong>È importante conservare tutti i documenti relativi ai pagamenti dei contributi, in quanto potrebbero essere richiesti in caso di controlli.</p><br>
+<p><strong>- Verificare periodicamente le informazioni:</strong> Le normative in materia di lavoro domestico possono subire variazioni. Si consiglia di consultare periodicamente il sito dell’INPS per eventuali aggiornamenti.</p><br>
+<p><strong>- Richiedere assistenza: </strong> In caso di dubbi o difficoltà, è possibile rivolgersi all’INPS o contattarci.</p><br>
+
+<p><strong>Conclusione</p></strong><br>
+
+<p>Le normative sui contributi per collaboratori familiari sono in continua evoluzione. Per essere sempre aggiornato e sicuro di applicare le regole corrette, ti consigliamo di affidarti alla nostra consulenza personalizzata. Il nostro team di esperti ti guiderà attraverso tutte le fasi, fornendoti le soluzioni più adatte alle tue esigenze.</p><br>
+
+
+      `,
+    tempoLettura: 2,
+    immagine: collabfamiliari,
+    tags: ["contributi collaboratori familiari", "scadenze INPS collaboratori familiari", "colf badanti baby-sitter contributi"],
   },
 ];

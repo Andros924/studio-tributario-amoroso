@@ -14,14 +14,20 @@ const DettaglioArticolo = () => {
   return (
     <div className="bg-gray-100 min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <article className="bg-white shadow-lg rounded-lg overflow-hidden">
-          {articolo.immagine && (
+        
+        {/* L'immagine sopra l'articolo */}
+        {articolo.immagine && (
+          <div className="w-full">
             <img 
               src={articolo.immagine} 
               alt={articolo.titolo} 
-              className="w-full h-64 object-cover"
+              className="w-1/2 h-auto mx-auto rounded-lg" /* Immagine responsiva ridotta */
             />
-          )}
+          </div>
+        )}
+
+        {/* Articolo di dettaglio */}
+        <article className="bg-white shadow-lg rounded-lg overflow-hidden mt-6">
           <div className="p-8">
             <h1 className="text-4xl font-bold text-blue-900 mb-4">{articolo.titolo}</h1>
             <div className="flex items-center text-gray-600 mb-6">
@@ -39,6 +45,7 @@ const DettaglioArticolo = () => {
           </div>
         </article>
 
+        {/* Tags */}
         {articolo.tags && articolo.tags.length > 0 && (
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-blue-900 mb-4">Tag</h2>
