@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon, CheckIcon } from 'lucide-react';
-import { articoliEvidenza } from '../components/Data';  // Importiamo il nuovo articolo
+import { ArrowRightIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { articoliEvidenza } from '../components/Data';
 
 const Home = () => {
-  // Esempio di servizi offerti
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = ["src/assets/images/carousel-1.jpg", "src/assets/images/carousel-2.jpg", "src/assets/images/carousel-3.jpg"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const goToNextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
   const servizi = [
     "Consulenza fiscale",
     "Dichiarazione dei redditi",
@@ -15,22 +36,76 @@ const Home = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* Modern Carousel */}
+      <div className="relative w-full h-[50vh] overflow-hidden">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
+              index === currentIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={image}
+              alt={`Carousel ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={goToPrevSlide}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/75 transition-colors"
+        >
+          <ChevronLeftIcon className="w-6 h-6 text-blue-900" />
+        </button>
+        <button
+          onClick={goToNextSlide}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/75 transition-colors"
+        >
+          <ChevronRightIcon className="w-6 h-6 text-blue-900" />
+        </button>
+
+        {/* Navigation Dots */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                index === currentIndex ? 'bg-blue-500' : 'bg-white/50 hover:bg-white/75'
+              }`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="bg-blue-500 text-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center sm:text-left">
-            Soluzioni Fiscali su Misura
-          </h1>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-center sm:text-left">
-            Naviga il complesso mondo fiscale con i nostri esperti al tuo fianco
-          </p>
-          <div className="text-center sm:text-left">
-            <Link
-              to="/contatti"
-              className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
-            >
-              Richiedi una Consulenza
-            </Link>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+          <div className="lg:w-1/2">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center sm:text-left">
+              Soluzioni Fiscali su Misura a Palermo
+            </h1>
+            <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-center sm:text-left">
+              Naviga nel complesso mondo fiscale con i nostri esperti a Palermo, pronti a fornirti assistenza personalizzata.
+            </p>
+            <div className="text-center sm:text-left">
+              <Link
+                to="/contatti"
+                className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
+              >
+                Richiedi una Consulenza
+              </Link>
+            </div>
+          </div>
+          <div className="lg:w-1/2 mt-8 lg:mt-0">
+            <img
+              src="/images/hero-office.jpg"
+              alt="Ufficio a Palermo"
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
         </div>
       </section>
@@ -90,10 +165,10 @@ const Home = () => {
       <section className="bg-blue-500 text-white py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Pronto a semplificare la tua situazione fiscale?
+            Pronto a semplificare la tua situazione fiscale a Palermo?
           </h2>
           <p className="text-lg sm:text-xl mb-6 sm:mb-8">
-            I nostri esperti sono qui per aiutarti. Contattaci oggi stesso per una consulenza personalizzata.
+            I nostri esperti di Palermo sono qui per aiutarti. Contattaci oggi stesso per una consulenza personalizzata.
           </p>
           <Link
             to="/contatti"
