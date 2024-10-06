@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom';
 import { ArrowRightIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { articoliEvidenza } from '../components/Data';
 
+// Importazione dinamica delle immagini
+import carousel1 from '../assets/images/carousel-1.jpg';
+import carousel2 from '../assets/images/carousel-2.jpg';
+import carousel3 from '../assets/images/carousel-3.jpg';
+import heroOffice from '../assets/images/hero-office.jpg';
+
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["src/assets/images/carousel-1.jpg", "src/assets/images/carousel-2.jpg", "src/assets/images/carousel-3.jpg"];
+  const images = [carousel1, carousel2, carousel3];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -102,7 +108,7 @@ const Home = () => {
           </div>
           <div className="lg:w-1/2 mt-8 lg:mt-0">
             <img
-              src="/images/hero-office.jpg"
+              src={heroOffice}
               alt="Ufficio a Palermo"
               className="w-full h-auto rounded-lg shadow-lg"
             />
