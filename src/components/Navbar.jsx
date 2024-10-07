@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="bg-blue-900 p-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-white font-bold text-xl">Tributarista Palermo</Link>
+        <Link to="/" className="text-white font-bold text-xl">Tributarista Alessandro Amoroso</Link>
 
         {/* Hamburger menu button (visible on mobile) */}
         <div className="md:hidden">
