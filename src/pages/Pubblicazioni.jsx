@@ -1,11 +1,9 @@
-import React from "react";
-
 const Pubblicazioni = () => {
   const libri = [
     {
       titolo: "REDDITI PF FLAT TAX, REGIMI SPECIALI",
       autore: "ALESSANDRO AMOROSO",
-      immagine: "src/assets/images/LIBRO_1.jpg",
+      immagine: "/assets/images/LIBRO_1.jpg", // Percorso nella cartella public
       descrizione:
         "Il libro offre una guida completa alla dichiarazione dei redditi delle persone fisiche, con particolare attenzione alle detrazioni, deduzioni, flat tax incrementale e novità ISA 2023. Un valido strumento per professionisti e contribuenti che desiderano ottimizzare la propria posizione fiscale.",
       link: "https://www.amazon.it/gp/product/B0D9KDN24N",
