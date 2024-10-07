@@ -1,5 +1,5 @@
 import immagineRavvedimento from "../assets/images/ravvedimento.jpg";
-import collabfamiliari from "../assets/images/collabfamiliari.jpg"
+import collabfamiliari from "../assets/images/collabfamiliari.jpg";
 
 export const articoliEvidenza = [
   {
@@ -107,6 +107,10 @@ export const articoliEvidenza = [
       `,
     tempoLettura: 2,
     immagine: collabfamiliari,
-    tags: ["contributi collaboratori familiari", "scadenze INPS collaboratori familiari", "colf badanti baby-sitter contributi"],
+    tags: [
+      "contributi collaboratori familiari",
+      "scadenze INPS collaboratori familiari",
+      "colf badanti baby-sitter contributi",
+    ],
   },
 ];

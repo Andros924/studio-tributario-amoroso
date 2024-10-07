@@ -8,6 +8,7 @@ import Servizi from "./pages/Servizi";
 import Blog from "./pages/Blog";
 import DettaglioArticolo from "./pages/DettaglioArticolo";
 import Contatti from "./pages/Contatti";
+import Pubblicazioni from "./pages/Pubblicazioni"; 
 import Footer from "./components/Footer";
 
 function App() {
@@ -18,10 +19,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/chi-siamo" element={<ChiSiamo />} />
         <Route path="/servizi" element={<Servizi />} />
-        {/* Aggiungi il jolly "*" qui */}
         <Route path="/blog/*" element={<Blog />} />
         <Route path="/blog/:id" element={<DettaglioArticolo />} />
         <Route path="/contatti" element={<Contatti />} />
+        <Route path="/pubblicazioni" element={<Pubblicazioni />} />{" "}
       </Routes>
       <Footer />
     </>

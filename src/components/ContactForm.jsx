@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -13,33 +13,33 @@ const ContactForm = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setSubmitted(true);
         setFormData({
-          name: '',
-          email: '',
-          message: ''
+          name: "",
+          email: "",
+          message: "",
         });
       } else {
-        console.error('Errore durante l\'invio del messaggio');
+        console.error("Errore durante l'invio del messaggio");
       }
     } catch (error) {
-      console.error('Errore:', error);
+      console.error("Errore:", error);
     }
   };
 
@@ -54,9 +54,17 @@ const ContactForm = () => {
           Grazie per averci contattato! Ti risponderemo al più presto.
         </p>
       ) : (
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 space-y-4"
+        >
           <div>
-            <label className="block text-gray-700 font-semibold mb-2" htmlFor="name">Nome</label>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="name"
+            >
+              Nome
+            </label>
             <input
               id="name"
               name="name"
@@ -69,7 +77,12 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2" htmlFor="email">Email</label>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
             <input
               id="email"
               name="email"
@@ -82,7 +95,12 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2" htmlFor="message">Messaggio</label>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="message"
+            >
+              Messaggio
+            </label>
             <textarea
               id="message"
               name="message"

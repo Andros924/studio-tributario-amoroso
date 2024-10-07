@@ -10,13 +10,11 @@ import Services from "./components/Services";
 const Home = () => {
   return (
     <div className="home">
-    
       <main>
         <IntroSection />
         <Services />
         <CallToAction />
       </main>
-     
     </div>
   );
 };

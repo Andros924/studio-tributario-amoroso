@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { MapPinIcon, PhoneIcon, MailIcon } from 'lucide-react';
-import emailjs from 'emailjs-com'; // Importa EmailJS
+import React, { useState } from "react";
+import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
+import emailjs from "emailjs-com"; // Importa EmailJS
 
 const Contatti = () => {
   const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    messaggio: ''
+    nome: "",
+    email: "",
+    messaggio: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);  // Indicatore di invio
+  const [isLoading, setIsLoading] = useState(false); // Indicatore di invio
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -23,25 +23,25 @@ const Contatti = () => {
 
     emailjs
       .send(
-        'service_7oxppdw',    // Service ID
-        'template_wt7hqwt',   // Template ID
+        "service_7oxppdw", // Service ID
+        "template_wt7hqwt", // Template ID
         {
-          from_name: formData.nome,       // Nome di chi invia il messaggio
-          from_email: formData.email,     // Email di chi invia il messaggio
-          message: formData.messaggio     // Messaggio inviato
+          from_name: formData.nome, // Nome di chi invia il messaggio
+          from_email: formData.email, // Email di chi invia il messaggio
+          message: formData.messaggio, // Messaggio inviato
         },
-        'UW7DFNb0RM1fdlcrn'   // Public Key
+        "UW7DFNb0RM1fdlcrn" // Public Key
       )
       .then(
         (response) => {
-          console.log('SUCCESS!', response.status, response.text);
+          console.log("SUCCESS!", response.status, response.text);
           setIsSubmitted(true);
           setIsLoading(false); // Ferma il caricamento
-          setFormData({ nome: '', email: '', messaggio: '' });
+          setFormData({ nome: "", email: "", messaggio: "" });
         },
         (err) => {
-          console.error('FAILED...', err);
-          setError('Si è verificato un errore. Riprova più tardi.');
+          console.error("FAILED...", err);
+          setError("Si è verificato un errore. Riprova più tardi.");
           setIsLoading(false); // Ferma il caricamento in caso di errore
         }
       );
@@ -57,15 +57,26 @@ const Contatti = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Form di contatto */}
           <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold text-blue-900 mb-6">Inviaci un messaggio</h2>
+            <h2 className="text-2xl font-semibold text-blue-900 mb-6">
+              Inviaci un messaggio
+            </h2>
 
             {/* Notifica di successo */}
-            {isSubmitted && <p className="text-green-500 mb-4">Messaggio inviato con successo!</p>}
+            {isSubmitted && (
+              <p className="text-green-500 mb-4">
+                Messaggio inviato con successo!
+              </p>
+            )}
             {error && <p className="text-red-500 mb-4">{error}</p>}
 
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="nome" className="block text-gray-700 font-medium mb-2">Nome</label>
+                <label
+                  htmlFor="nome"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Nome
+                </label>
                 <input
                   type="text"
                   id="nome"
@@ -77,7 +88,12 @@ const Contatti = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+                <label
+                  htmlFor="email"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -89,7 +105,12 @@ const Contatti = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="messaggio" className="block text-gray-700 font-medium mb-2">Messaggio</label>
+                <label
+                  htmlFor="messaggio"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Messaggio
+                </label>
                 <textarea
                   id="messaggio"
                   name="messaggio"
@@ -104,22 +125,25 @@ const Contatti = () => {
                 type="submit"
                 disabled={isLoading} // Disabilita il pulsante durante l'invio
                 className={`w-full bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ${
-                  isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                  isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                {isLoading ? 'Invio in corso...' : 'Invia Messaggio'}
+                {isLoading ? "Invio in corso..." : "Invia Messaggio"}
               </button>
             </form>
           </div>
 
           {/* Informazioni di contatto */}
           <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold text-blue-900 mb-6">I nostri contatti</h2>
+            <h2 className="text-2xl font-semibold text-blue-900 mb-6">
+              I nostri contatti
+            </h2>
             <div className="space-y-4">
               <div className="flex items-start">
                 <MapPinIcon className="w-6 h-6 text-gray-400 mr-3 flex-shrink-0" />
                 <p className="text-gray-700">
-                  Via Villa Rosato 28<br />
+                  Via Villa Rosato 28
+                  <br />
                   90146 Palermo
                 </p>
               </div>
@@ -133,7 +157,9 @@ const Contatti = () => {
               </div>
             </div>
             <div className="mt-8">
-              <h3 className="text-xl font-semibold text-blue-900 mb-4">Orari di apertura</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">
+                Orari di apertura
+              </h3>
               <ul className="text-gray-700">
                 <li>Lunedì: 9:00 - 18:00</li>
                 <li>Martedì: 9:00 - 18:00</li>

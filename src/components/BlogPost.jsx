@@ -1,13 +1,17 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { articoliEvidenza } from './Data';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { articoliEvidenza } from "./Data";
 
 const BlogPost = () => {
   const { id } = useParams();
-  const post = articoliEvidenza.find(article => article.id === parseInt(id));
+  const post = articoliEvidenza.find((article) => article.id === parseInt(id));
 
   if (!post) {
-    return <div className="text-center py-10 text-gray-700">Articolo non trovato.</div>;
+    return (
+      <div className="text-center py-10 text-gray-700">
+        Articolo non trovato.
+      </div>
+    );
   }
 
   return (
@@ -18,7 +22,7 @@ const BlogPost = () => {
       <p className="text-gray-500 text-sm md:text-base mt-2 text-center mb-8">
         {post.data} - {post.autore}
       </p>
-      <div 
+      <div
         className="prose prose-lg max-w-full text-gray-700 mt-6 text-center space-y-6"
         dangerouslySetInnerHTML={{ __html: post.contenuto }}
       />

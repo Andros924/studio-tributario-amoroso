@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { articoliEvidenza } from './Data';
+import React from "react";
+import { Link } from "react-router-dom";
+import { articoliEvidenza } from "./Data";
 
 const BlogList = () => {
   return (
@@ -15,10 +15,10 @@ const BlogList = () => {
             <div key={post.id} className="bg-white shadow-lg rounded-lg p-6">
               {post.immagine && (
                 <div className="w-full h-48">
-                  <img 
-                    src={post.immagine} 
-                    alt={post.titolo} 
-                    className="object-cover w-full h-full rounded-lg" 
+                  <img
+                    src={post.immagine}
+                    alt={post.titolo}
+                    className="object-cover w-full h-full rounded-lg"
                   />
                 </div>
               )}
@@ -39,7 +39,9 @@ const BlogList = () => {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">Nessun articolo disponibile.</p>
+          <p className="text-center text-gray-500">
+            Nessun articolo disponibile.
+          </p>
         )}
       </div>
     </div>

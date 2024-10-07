@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRightIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { articoliEvidenza } from '../components/Data';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
+import { articoliEvidenza } from "../components/Data";
 
 // Importazione dinamica delle immagini
-import carousel1 from '../assets/images/carousel-1.jpg';
-import carousel2 from '../assets/images/carousel-2.jpg';
-import carousel3 from '../assets/images/carousel-3.jpg';
-import heroOffice from '../assets/images/hero-office.jpg';
+import carousel1 from "../assets/images/carousel-1.jpg";
+import carousel2 from "../assets/images/carousel-2.jpg";
+import carousel3 from "../assets/images/carousel-3.jpg";
+import heroOffice from "../assets/images/hero-office.jpg";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +30,9 @@ const Home = () => {
   };
 
   const goToPrevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const goToNextSlide = () => {
@@ -37,7 +44,7 @@ const Home = () => {
     "Dichiarazione dei redditi",
     "Pianificazione fiscale",
     "Contabilità aziendale",
-    "Assistenza in caso di controlli fiscali"
+    "Assistenza in caso di controlli fiscali",
   ];
 
   return (
@@ -48,7 +55,7 @@ const Home = () => {
           <div
             key={index}
             className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
-              index === currentIndex ? 'opacity-100' : 'opacity-0'
+              index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           >
             <img
@@ -79,7 +86,9 @@ const Home = () => {
             <button
               key={index}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-blue-500' : 'bg-white/50 hover:bg-white/75'
+                index === currentIndex
+                  ? "bg-blue-500"
+                  : "bg-white/50 hover:bg-white/75"
               }`}
               onClick={() => goToSlide(index)}
             />
@@ -95,7 +104,8 @@ const Home = () => {
               Soluzioni Fiscali su Misura a Palermo
             </h1>
             <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-center sm:text-left">
-              Naviga nel complesso mondo fiscale con i nostri esperti a Palermo, pronti a fornirti assistenza personalizzata.
+              Naviga nel complesso mondo fiscale con i nostri esperti a Palermo,
+              pronti a fornirti assistenza personalizzata.
             </p>
             <div className="text-center sm:text-left">
               <Link
@@ -128,7 +138,8 @@ const Home = () => {
                 <CheckIcon className="w-8 h-8 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{servizio}</h3>
                 <p className="text-gray-600">
-                  Offriamo soluzioni personalizzate per ogni tua esigenza fiscale.
+                  Offriamo soluzioni personalizzate per ogni tua esigenza
+                  fiscale.
                 </p>
               </div>
             ))}
@@ -145,7 +156,9 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {articoliEvidenza.map((articolo) => (
               <div key={articolo.id} className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-2">{articolo.titolo}</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  {articolo.titolo}
+                </h3>
                 <p className="text-gray-600 mb-4">{articolo.excerpt}</p>
                 <Link
                   to={`/blog/${articolo.id}`}
@@ -174,7 +187,8 @@ const Home = () => {
             Pronto a semplificare la tua situazione fiscale a Palermo?
           </h2>
           <p className="text-lg sm:text-xl mb-6 sm:mb-8">
-            I nostri esperti di Palermo sono qui per aiutarti. Contattaci oggi stesso per una consulenza personalizzata.
+            I nostri esperti di Palermo sono qui per aiutarti. Contattaci oggi
+            stesso per una consulenza personalizzata.
           </p>
           <Link
             to="/contatti"

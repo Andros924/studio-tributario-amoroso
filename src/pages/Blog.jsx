@@ -1,7 +1,7 @@
-import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import BlogList from '../components/BlogList';
-import BlogPost from '../components/BlogPost';
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import BlogList from "../components/BlogList";
+import BlogPost from "../components/BlogPost";
 
 const Blog = () => {
   const location = useLocation();
@@ -9,7 +9,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {location.pathname === '/blog' && (
+        {location.pathname === "/blog" && (
           <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
             Il Nostro Blog Fiscale
           </h1>
