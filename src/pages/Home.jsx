@@ -16,6 +16,7 @@ import heroOffice from "../assets/images/hero-office.jpg";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showCookieBanner, setShowCookieBanner] = useState(true); // Gestione banner cookie
   const images = [carousel1, carousel2, carousel3];
 
   useEffect(() => {
@@ -39,6 +40,16 @@ const Home = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  const handleAcceptCookies = () => {
+    setShowCookieBanner(false);
+    // Puoi anche salvare questa scelta in localStorage per ricordare l'utente
+  };
+
+  const handleRejectCookies = () => {
+    setShowCookieBanner(false);
+    // Gestisci l'eventuale rifiuto dei cookie
+  };
+
   const servizi = [
     "Consulenza fiscale",
     "Dichiarazione dei redditi",
@@ -49,6 +60,44 @@ const Home = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* Cookie Banner */}
+      {showCookieBanner && (
+        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-4 px-6 flex justify-between items-center">
+          <p className="text-sm">
+            Utilizziamo i cookie per migliorare l'esperienza utente. Per saperne
+            di più, consulta la nostra{" "}
+            <Link
+              to="/privacy"
+              className="underline text-blue-400 hover:text-blue-500"
+            >
+              Privacy Policy
+            </Link>{" "}
+            e{" "}
+            <Link
+              to="/terms"
+              className="underline text-blue-400 hover:text-blue-500"
+            >
+              Termini e Condizioni
+            </Link>
+            .
+          </p>
+          <div className="space-x-4">
+            <button
+              onClick={handleAcceptCookies}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400"
+            >
+              Accetta
+            </button>
+            <button
+              onClick={handleRejectCookies}
+              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500"
+            >
+              Rifiuta
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Modern Carousel */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         {images.map((image, index) => (
@@ -169,30 +218,22 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-8 sm:mt-12">
-            <Link
-              to="/blog"
-              className="bg-blue-900 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-500 transition duration-300"
-            >
-              Esplora il Blog
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
+      {/* CTA Section */}
       <section className="bg-blue-500 text-white py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Pronto a semplificare la tua situazione fiscale a Palermo?
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">
+            Hai bisogno di assistenza fiscale?
           </h2>
           <p className="text-lg sm:text-xl mb-6 sm:mb-8">
-            I nostri esperti di Palermo sono qui per aiutarti. Contattaci oggi
-            stesso per una consulenza personalizzata.
+            I nostri esperti sono pronti ad aiutarti con soluzioni su misura per
+            te.
           </p>
           <Link
             to="/contatti"
-            className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-900 hover:text-white transition duration-300"
+            className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
           >
             Contattaci Ora
           </Link>

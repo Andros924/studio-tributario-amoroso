@@ -10,6 +10,8 @@ import DettaglioArticolo from "./pages/DettaglioArticolo";
 import Contatti from "./pages/Contatti";
 import Pubblicazioni from "./pages/Pubblicazioni"; 
 import Footer from "./components/Footer";
+import PrivacyPolicy from "./pages/Privacy";
+import TermsConditions from "./pages/Terms";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/blog/:id" element={<DettaglioArticolo />} />
         <Route path="/contatti" element={<Contatti />} />
         <Route path="/pubblicazioni" element={<Pubblicazioni />} />{" "}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsConditions />} />
       </Routes>
       <Footer />
     </>
