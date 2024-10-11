@@ -1,5 +1,7 @@
 import immagineRavvedimento from "../assets/images/ravvedimento.jpg";
 import collabfamiliari from "../assets/images/collabfamiliari.jpg";
+import immagineQuadroRH from "../assets/images/quadroRH.jpg";
+import immagineBonusSud from "../assets/images/bonusud.jpg";
 
 export const articoliEvidenza = [
   {
@@ -112,5 +114,90 @@ export const articoliEvidenza = [
       "scadenze INPS collaboratori familiari",
       "colf badanti baby-sitter contributi",
     ],
+  },
+  {
+    id: 4,
+    titolo:
+      "Modello Redditi 2024: Quadro RH e la gestione dei redditi di partecipazione",
+    autore: "Alessandro Amoroso",
+    data: "11 ottobre 2024",
+    excerpt:
+      "Il Quadro RH nel Modello Redditi 2024 è cruciale per le società di persone e associazioni di artisti e professionisti. Ecco una guida alla corretta compilazione.",
+    contenuto: `
+       <p>Il <strong>Modello Redditi 2024</strong>, con particolare attenzione al <strong>Quadro RH</strong>, riveste un ruolo cruciale per le società di persone e le associazioni fra artisti e professionisti residenti in Italia. Questo quadro deve essere compilato dai soggetti che partecipano in qualità di soci a società di persone ed equiparate, ed è finalizzato alla dichiarazione dei redditi di partecipazione.</p><br>
+
+<p><strong>Cos’è il Quadro RH?</strong></p><br>
+
+<p>Il Quadro RH è obbligatorio per le società semplici o le associazioni fra artisti e professionisti che hanno la sede legale o amministrativa nel territorio italiano. Questo strumento serve a dichiarare la quota di reddito (o di perdita) derivante dalla partecipazione in altre società di persone, in proporzione alla propria quota di partecipazione.</p><br>
+
+<p>In base all'art. 5 del TUIR, le quote di partecipazione agli utili devono essere definite da un atto pubblico o scrittura privata autenticata, con data anteriore all'inizio del periodo d'imposta. Se tali quote non sono definite da atti ufficiali, si presumono proporzionate al valore dei conferimenti dei soci.</p><br>
+
+<p><strong>Sezione I del Quadro RH</strong></p><br>
+
+<p>Nella Sezione I del Quadro RH, i soggetti partecipanti devono riportare le seguenti informazioni:</p><br>
+
+<ul>
+  <li><strong>Colonna 1:</strong> il codice fiscale della società o associazione partecipata;</li>
+  <li><strong>Colonna 2:</strong> un codice numerico che varia in base alla tipologia di società (ad esempio, "1" per società di persone in contabilità ordinaria o semplificata, "4" per società semplici);</li>
+  <li><strong>Colonna 3:</strong> la percentuale della quota di partecipazione al reddito;</li>
+  <li><strong>Colonna 4:</strong> l'ammontare del reddito o della perdita imputata al dichiarante;</li>
+  <li><strong>Colonna 7:</strong> la quota delle ritenute d'acconto subite dalla società partecipata.</li>
+</ul><br>
+
+<p><strong>Sezione II del Quadro RH</strong></p><br>
+
+<p>La Sezione II deve essere compilata solo nel primo modulo nel caso di partecipazione in più società. Qui vengono riportate le somme delle quote di reddito o di perdita derivanti dalle partecipazioni dichiarate nella Sezione I.</p><br>
+
+<p><strong>Rilevanza delle perdite di partecipazione</strong></p><br>
+
+<p>In caso di perdite superiori rispetto al capitale sociale nelle società in accomandita semplice, le stesse sono imputate esclusivamente ai soci accomandatari. Inoltre, la compilazione del rigo RH10 consente di riportare le eccedenze di perdite d'impresa maturate negli anni precedenti, al netto degli importi compensati con altri redditi.</p><br>
+
+<p><strong>Considerazioni finali</strong></p><br>
+
+<p>La compilazione del Quadro RH nel Modello Redditi 2024 rappresenta un passaggio fondamentale per coloro che partecipano a società di persone ed equiparate. La precisione nella dichiarazione dei redditi di partecipazione è essenziale per evitare contestazioni o rettifiche da parte dell’Amministrazione Finanziaria.</p><br>
+
+<p><strong>Affidati allo Studio Amoroso</strong></p><br>
+
+<p>Per una gestione accurata e personalizzata delle tue dichiarazioni fiscali, soprattutto in contesti complessi come quelli delle società di persone e delle associazioni tra artisti e professionisti, <strong>lo Studio Amoroso</strong> è al tuo fianco. Grazie alla nostra esperienza e competenza, ti offriamo un'assistenza completa e su misura per garantire la conformità alle normative vigenti e la massima tranquillità fiscale.</p><br>
+
+<p><strong>Contattaci</strong> per una consulenza dedicata!</p>
+      `,
+    tempoLettura: 2,
+    immagine: immagineQuadroRH,
+    tags: ["modello redditi", "quadro RH", "dichiarazioni fiscali"],
+  },
+  {
+  id: 3,
+    titolo: "Bonus investimenti nel Mezzogiorno: Guida alla Dichiarazione 2024",
+    autore: "Alessandro Amoroso",
+    data: "7 ottobre 2024",
+    excerpt:
+      "Il credito d'imposta per gli investimenti nel Mezzogiorno, confermato fino al 31 dicembre 2023, rappresenta una fondamentale agevolazione per le imprese delle regioni meridionali. Scopri i requisiti e le modalità di fruizione per il 2024.",
+    contenuto: `
+      <p>A partire dal 1° gennaio 2016, il <strong>Credito d'Imposta per gli investimenti nel Mezzogiorno</strong> ha rappresentato una fondamentale agevolazione per le imprese del Sud Italia, confermata e prorogata fino al 31 dicembre 2023 grazie alla Legge di Stabilità 2023. Questo strumento, introdotto dall'art. 1, commi 98-108 della Legge 208/2015, mira a sostenere gli investimenti in <strong>macchinari, impianti e attrezzature</strong> destinati a nuove strutture produttive o all'espansione di quelle esistenti nelle regioni meno sviluppate d'Italia: <strong>Campania, Puglia, Basilicata, Calabria, Sicilia, Sardegna, Molise e Abruzzo</strong>.</p><br>
+
+      <p><strong>Chi può beneficiare del bonus?</strong></p><br>
+      <p>L'agevolazione si rivolge esclusivamente ai <strong>titolari di reddito d'impresa</strong>, indipendentemente dal regime contabile adottato, escludendo i soggetti operanti nei settori della siderurgia, carbone, costruzione navale, trasporti e infrastrutture energetiche. Le imprese devono realizzare investimenti che favoriscano la creazione di nuovi stabilimenti, l'ampliamento di quelli esistenti o la diversificazione produttiva.</p><br>
+
+      <p><strong>Come viene calcolato il credito?</strong></p><br>
+      <p>Le percentuali del credito d'imposta variano in funzione della dimensione dell'impresa e della zona in cui vengono effettuati gli investimenti. Per le regioni del Sud, la misura del bonus è stabilita come segue:</p><br>
+      <ul>
+        <li><strong>Piccole imprese</strong>: 45% (30% per l'Abruzzo)</li>
+        <li><strong>Medie imprese</strong>: 35% (20% per l'Abruzzo)</li>
+        <li><strong>Grandi imprese</strong>: 25% (10% per l'Abruzzo)</li>
+      </ul><br>
+
+      <p><strong>Le novità del 2024</strong></p><br>
+      <p>Con l'introduzione del modello CIM23, in vigore dall'8 giugno 2023, si è reso necessario presentare <strong>due distinti modelli</strong> per le imprese che abbiano realizzato investimenti tra il 2022 e il 2023. Questo per assicurare che le comunicazioni siano separate tra i periodi di investimento, con la scadenza fissata al 31 dicembre 2024 per le dichiarazioni relative al 2023.</p><br>
+
+      <p><strong>La dichiarazione del credito d'imposta</strong></p><br>
+      <p>La compilazione dei modelli dichiarativi per usufruire del bonus Mezzogiorno prevede specifici quadri, tra cui il <strong>quadro RS</strong> per la segnalazione degli <strong>aiuti di Stato</strong> e il <strong>quadro RU</strong> per riportare il credito d'imposta maturato. Ogni fase della dichiarazione deve essere completata con attenzione, includendo l'anno di riferimento e i codici tributo corretti, evitando così eventuali errori che potrebbero comportare sanzioni o la decadenza dell'agevolazione.</p><br>
+
+      <p><strong>Considerazioni finali</strong></p><br>
+      <p>Il <strong>credito d'imposta per gli investimenti nel Sud</strong> rappresenta una delle principali leve per stimolare la crescita delle imprese nel Mezzogiorno. Tuttavia, è essenziale rispettare le modalità e i termini di dichiarazione per garantire il pieno utilizzo del beneficio. Resta imprescindibile per i contribuenti l'assistenza di un esperto tributarista per la corretta gestione delle pratiche e per evitare complicazioni durante il percorso di fruizione dell’agevolazione.</p>
+    `,
+    tempoLettura: 3,
+    immagine: immagineBonusSud,
+    tags: ["bonus", "fisco", "Mezzogiorno", "credito d'imposta"],
   },
 ];
