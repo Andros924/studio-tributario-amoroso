@@ -8,6 +8,7 @@ export const articoliEvidenza = [
     id: 1,
     titolo:
       "Ravvedimento speciale: un'opportunità per i contribuenti ISA che aderiscono al Concordato Preventivo Biennale?",
+      slug: "ravvedimento-speciale-opportunita-contribuenti-isa-speciale",
     autore: "Alessandro Amoroso",
     data: "4 ottobre 2024",
     excerpt:
@@ -58,6 +59,7 @@ export const articoliEvidenza = [
   {
     id: 2,
     titolo: "Nuova scadenza per i contributi dei collaboratori familiari",
+    slug: "nuova-scadenza-per-i-contributi-dei-collaboratori-familiari",
     autore: "Alessandro Amoroso",
     data: "4 ottobre 2024",
     excerpt:
@@ -119,6 +121,7 @@ export const articoliEvidenza = [
     id: 4,
     titolo:
       "Modello Redditi 2024: Quadro RH e la gestione dei redditi di partecipazione",
+      slug: "modello-redditi-2024-quadro-rh",
     autore: "Alessandro Amoroso",
     data: "11 ottobre 2024",
     excerpt:
@@ -169,6 +172,7 @@ export const articoliEvidenza = [
   {
   id: 3,
     titolo: "Bonus investimenti nel Mezzogiorno: Guida alla Dichiarazione 2024",
+    slug: "bonus-investimenti-nel-mezzogiorno",
     autore: "Alessandro Amoroso",
     data: "7 ottobre 2024",
     excerpt:

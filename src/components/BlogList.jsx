@@ -31,7 +31,7 @@ const BlogList = () => {
                   : post.excerpt}
               </p>
               <Link
-                to={`/blog/${post.id}`}
+                to={`/blog/${post.slug}`} // Link using slug
                 className="text-gray-700 hover:text-gray-400 font-semibold hover:underline"
               >
                 Leggi di più
@@ -39,9 +39,7 @@ const BlogList = () => {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">
-            Nessun articolo disponibile.
-          </p>
+          <p className="text-center text-gray-500">Nessun articolo disponibile.</p>
         )}
       </div>
     </div>

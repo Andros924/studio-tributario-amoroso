@@ -19,9 +19,9 @@ const Blog = () => {
           {/* Lista di articoli */}
           <Route path="/" element={<BlogList />} />
 
-          {/* Singolo post del blog */}
+          {/* Singolo post del blog con lo slug */}
           <Route
-            path="/:id"
+            path="/:slug"
             element={
               <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                 <BlogPost />

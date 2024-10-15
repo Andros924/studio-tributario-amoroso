@@ -42,12 +42,10 @@ const Home = () => {
 
   const handleAcceptCookies = () => {
     setShowCookieBanner(false);
-    // Puoi anche salvare questa scelta in localStorage per ricordare l'utente
   };
 
   const handleRejectCookies = () => {
     setShowCookieBanner(false);
-    // Gestisci l'eventuale rifiuto dei cookie
   };
 
   const servizi = [
@@ -210,7 +208,7 @@ const Home = () => {
                 </h3>
                 <p className="text-gray-600 mb-4">{articolo.excerpt}</p>
                 <Link
-                  to={`/blog/${articolo.id}`}
+                  to={`/blog/${articolo.slug}`} // Usa lo slug invece dell'id
                   className="text-blue-500 font-semibold hover:underline flex items-center"
                 >
                   Leggi di più <ArrowRightIcon className="w-4 h-4 ml-2" />

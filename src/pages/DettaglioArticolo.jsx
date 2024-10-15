@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { CalendarIcon, UserIcon, ClockIcon } from "lucide-react";
-import { articoliEvidenza } from "../components/Data";
+import { articoliEvidenza } from "../components/Data"; // Importa i dati degli articoli
 
 const DettaglioArticolo = () => {
-  const { id } = useParams();
+  const { slug } = useParams(); // Usa lo slug come parametro
   const articolo = articoliEvidenza.find(
-    (article) => article.id === parseInt(id)
+    (article) => article.slug === slug // Cerca l'articolo usando lo slug
   );
 
   if (!articolo) {
@@ -22,7 +22,7 @@ const DettaglioArticolo = () => {
             <img
               src={articolo.immagine}
               alt={articolo.titolo}
-              className="w-1/2 h-auto mx-auto rounded-lg" /* Immagine responsiva ridotta */
+              className="w-1/2 h-auto mx-auto rounded-lg"
             />
           </div>
         )}

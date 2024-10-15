@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { articoliEvidenza } from "./Data";
 
 const BlogPost = () => {
-  const { id } = useParams();
-  const post = articoliEvidenza.find((article) => article.id === parseInt(id));
+  const { slug } = useParams(); // Get the slug from URL
+  const post = articoliEvidenza.find((article) => article.slug === slug); // Find by slug
 
   if (!post) {
     return (
