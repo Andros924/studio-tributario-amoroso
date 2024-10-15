@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { CalendarIcon, UserIcon, ClockIcon } from "lucide-react";
-import { articoliEvidenza } from "../components/Data"; // Importa i dati degli articoli
+import { articoliEvidenza } from "../components/Data";
+import { Helmet } from "react-helmet"; // Importa react-helmet
 
 const DettaglioArticolo = () => {
-  const { slug } = useParams(); // Usa lo slug come parametro
+  const { slug } = useParams(); // Usa lo slug per cercare l'articolo
   const articolo = articoliEvidenza.find(
-    (article) => article.slug === slug // Cerca l'articolo usando lo slug
+    (article) => article.slug === slug
   );
 
   if (!articolo) {
@@ -15,8 +16,26 @@ const DettaglioArticolo = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-12">
+      <Helmet>
+        <title>{articolo.titolo} | Il tuo sito</title>
+        <meta name="description" content={articolo.excerpt} />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content={articolo.titolo} />
+        <meta property="og:description" content={articolo.excerpt} />
+        <meta property="og:image" content={articolo.immagine} />
+        <meta property="og:url" content={`https://tuosito.com/blog/${articolo.slug}`} />
+        <meta property="og:type" content="article" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={articolo.titolo} />
+        <meta name="twitter:description" content={articolo.excerpt} />
+        <meta name="twitter:image" content={articolo.immagine} />
+        <meta name="twitter:url" content={`https://tuosito.com/blog/${articolo.slug}`} />
+      </Helmet>
+
       <div className="container mx-auto px-4">
-        {/* L'immagine sopra l'articolo */}
         {articolo.immagine && (
           <div className="w-full">
             <img
@@ -27,7 +46,6 @@ const DettaglioArticolo = () => {
           </div>
         )}
 
-        {/* Articolo di dettaglio */}
         <article className="bg-white shadow-lg rounded-lg overflow-hidden mt-6">
           <div className="p-8">
             <h1 className="text-4xl font-bold text-blue-900 mb-4">
@@ -48,7 +66,6 @@ const DettaglioArticolo = () => {
           </div>
         </article>
 
-        {/* Tags */}
         {articolo.tags && articolo.tags.length > 0 && (
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-blue-900 mb-4">Tag</h2>
