@@ -24,7 +24,7 @@ const DettaglioArticolo = () => {
         <meta property="og:title" content={articolo.titolo} />
         <meta property="og:description" content={articolo.excerpt} />
         <meta property="og:image" content={articolo.immagine} />
-        <meta property="og:url" content={`https://tuosito.com/blog/${articolo.slug}`} />
+        <meta property="og:url" content={`https://sprightly-narwhal-1ab87c.netlify.app/blog/${articolo.slug}`} />
         <meta property="og:type" content="article" />
         
         {/* Twitter Card tags */}
@@ -32,7 +32,7 @@ const DettaglioArticolo = () => {
         <meta name="twitter:title" content={articolo.titolo} />
         <meta name="twitter:description" content={articolo.excerpt} />
         <meta name="twitter:image" content={articolo.immagine} />
-        <meta name="twitter:url" content={`https://tuosito.com/blog/${articolo.slug}`} />
+        <meta name="twitter:url" content={`https://sprightly-narwhal-1ab87c.netlify.app/blog/${articolo.slug}`} />
       </Helmet>
 
       <div className="container mx-auto px-4">
