@@ -2,13 +2,14 @@ import immagineRavvedimento from "../assets/images/ravvedimento.jpg";
 import collabfamiliari from "../assets/images/collabfamiliari.jpg";
 import immagineQuadroRH from "../assets/images/quadroRH.jpg";
 import immagineBonusSud from "../assets/images/bonusud.jpg";
+import immagineCartellaEsattoriale from "../assets/images/immagineCartellaEsattoriale.jpg";
 
 export const articoliEvidenza = [
   {
     id: 1,
     titolo:
       "Ravvedimento speciale: un'opportunità per i contribuenti ISA che aderiscono al Concordato Preventivo Biennale?",
-      slug: "ravvedimento-speciale-opportunita-contribuenti-isa-speciale",
+    slug: "ravvedimento-speciale-opportunita-contribuenti-isa-speciale",
     autore: "Alessandro Amoroso",
     data: "4 ottobre 2024",
     excerpt:
@@ -121,7 +122,7 @@ export const articoliEvidenza = [
     id: 4,
     titolo:
       "Modello Redditi 2024: Quadro RH e la gestione dei redditi di partecipazione",
-      slug: "modello-redditi-2024-quadro-rh",
+    slug: "modello-redditi-2024-quadro-rh",
     autore: "Alessandro Amoroso",
     data: "11 ottobre 2024",
     excerpt:
@@ -170,7 +171,7 @@ export const articoliEvidenza = [
     tags: ["modello redditi", "quadro RH", "dichiarazioni fiscali"],
   },
   {
-  id: 3,
+    id: 3,
     titolo: "Bonus investimenti nel Mezzogiorno: Guida alla Dichiarazione 2024",
     slug: "bonus-investimenti-nel-mezzogiorno",
     autore: "Alessandro Amoroso",
@@ -203,5 +204,52 @@ export const articoliEvidenza = [
     tempoLettura: 3,
     immagine: immagineBonusSud,
     tags: ["bonus", "fisco", "Mezzogiorno", "credito d'imposta"],
+  },
+
+  {
+    id: 5,
+    titolo:
+      "Cartelle esattoriali e accertamenti fiscali: la Cassazione chiarisce il rapporto tra riduzioni parziali e annullamenti",
+    slug: "cartelle-esattoriali-accertamenti-fiscali-cassazione-riduzioni",
+    autore: "Alessandro Amoroso",
+    data: "17/10/2024",
+    excerpt:
+      "Con l'ordinanza n. 16094 del 10 giugno 2024, la Corte di Cassazione chiarisce i principi in merito alla riduzione parziale degli accertamenti fiscali e il loro effetto sulle cartelle esattoriali, evitando annullamenti integrali in presenza di riduzioni parziali del debito fiscale.",
+    contenuto: `
+       <p>Con l’<strong>ordinanza n. 16094 del 10 giugno 2024</strong>, la Corte di Cassazione ha affrontato una questione rilevante in materia di accertamenti fiscali e cartelle esattoriali, stabilendo dei principi chiari sull’effetto di una riduzione parziale dell’avviso di accertamento sulle cartelle di pagamento. L’intervento normativo e giurisprudenziale chiarisce come comportarsi in casi di rideterminazione degli importi dovuti, evitando l'annullamento integrale della cartella in presenza di riduzioni parziali del debito fiscale.</p><br>
+
+<p><strong>Il contesto giuridico: accertamenti provvisori e cartelle esattoriali</strong></p><br>
+
+<p>L'oggetto del contendere riguarda l’impugnazione di una <strong>cartella esattoriale</strong> emessa dall'Agenzia delle Entrate per tributi IRPEF non ancora definitivi, in seguito a due avvisi di accertamento. Nel corso del procedimento, il contribuente ha ottenuto un verdetto parzialmente favorevole nel giudizio contro gli atti impositivi, portando all'annullamento di parte degli importi richiesti. La Commissione Tributaria Provinciale (CTP) ha quindi annullato completamente la cartella, sostenendo che la riduzione degli accertamenti ne avrebbe automaticamente comportato l’invalidazione.</p><br>
+
+<p><strong>La decisione della Cassazione</strong></p><br>
+
+<p>La <strong>Corte di Cassazione</strong>, con l’ordinanza n. 16094 del 2024, ha accolto il ricorso dell’Agenzia delle Entrate, chiarendo un principio fondamentale: una riduzione parziale dell’accertamento non giustifica l’annullamento integrale della cartella di pagamento, ma solo la riduzione dell’importo dovuto. In questo senso, la cartella mantiene la sua validità, ma deve essere adeguata alla nuova somma risultante dalla sentenza che ha rideterminato il debito fiscale.</p><br>
+
+<p>Il punto centrale della sentenza si basa sull’interpretazione dell’<strong>art. 15 del D.P.R. n. 602 del 1973</strong>, che regola l’iscrizione nei ruoli per imposte non definitive. Questo principio consente al Fisco di cautelarsi in caso di accertamenti ancora soggetti a contenzioso, mantenendo comunque il diritto a riscuotere le somme in misura ridotta.</p><br>
+
+<p><strong>Normative rilevanti</strong></p><br>
+
+<p>Il fulcro della decisione risiede nella corretta interpretazione di diverse norme tributarie. L’<strong>art. 15 del D.P.R. n. 602/1973</strong> prevede che, per le imposte non ancora definitive, l’amministrazione finanziaria possa iscrivere a ruolo un terzo dell’importo contestato. Un altro riferimento chiave è l’<strong>art. 68 del D.Lgs. n. 546 del 1992</strong>, che regola il rimborso delle somme versate in eccesso in caso di riduzione dell'accertamento, da effettuarsi entro 90 giorni dalla sentenza.</p><br>
+
+<p><strong>Giurisprudenza di riferimento</strong></p><br>
+
+<p>La Corte richiama la <strong>sentenza n. 758/2017</strong> delle Sezioni Unite, che aveva stabilito che l’iscrizione a ruolo provvisoria è una misura cautelare e rimane valida fino alla conclusione del contenzioso, adeguandosi automaticamente alle sentenze. Questo principio è stato ribadito anche dalle sentenze <strong>n. 24554/2020</strong> e <strong>n. 30775/2018</strong>.</p><br>
+
+<p><strong>Il caso specifico</strong></p><br>
+
+<p>Nel caso in esame, la **CTR della Calabria** aveva confermato l’annullamento integrale della cartella. Tuttavia, la Cassazione ha chiarito che la riduzione della pretesa fiscale non può far venire meno completamente la cartella di pagamento, ma solo determinare una riformulazione dell’importo richiesto.</p><br>
+
+<p><strong>Implicazioni pratiche</strong></p><br>
+
+<p>La sentenza n. 16094/2024 della Corte di Cassazione ha importanti ripercussioni pratiche per i contribuenti e per l’Agenzia delle Entrate, chiarendo che in caso di riduzione parziale di un accertamento fiscale, la cartella esattoriale sarà semplicemente adeguata, senza essere annullata del tutto.</p><br>
+
+<p><strong>Conclusioni</strong></p><br>
+
+<p>In sintesi, l'ordinanza n. 16094/2024 stabilisce che una riduzione parziale dell'accertamento non legittima l'annullamento totale della cartella, ma solo la riduzione dell'importo. Questo principio rappresenta un passo importante per assicurare un’applicazione equilibrata delle leggi tributarie.</p>
+  `,
+    tempoLettura: 5,
+    immagine: immagineCartellaEsattoriale,
+    tags: ["cartelle esattoriali", "fisco", "cassazione"],
   },
 ];
