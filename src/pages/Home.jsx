@@ -54,6 +54,7 @@ const Home = () => {
     "Pianificazione fiscale",
     "Contabilità aziendale",
     "Assistenza in caso di controlli fiscali",
+    "Registrazioni preliminari", // Aggiunto il servizio "Registrazioni preliminari"
   ];
 
   return (
@@ -184,10 +185,19 @@ const Home = () => {
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <CheckIcon className="w-8 h-8 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{servizio}</h3>
-                <p className="text-gray-600">
-                  Offriamo soluzioni personalizzate per ogni tua esigenza
-                  fiscale.
-                </p>
+                {servizio === "Registrazioni preliminari" ? (
+                  <Link
+                    to="/registrazione-preliminare" // Link alla nuova pagina
+                    className="text-blue-500 font-semibold hover:underline flex items-center mt-2"
+                  >
+                    Vai al servizio <ArrowRightIcon className="w-4 h-4 ml-2" />
+                  </Link>
+                ) : (
+                  <p className="text-gray-600">
+                    Offriamo soluzioni personalizzate per ogni tua esigenza
+                    fiscale.
+                  </p>
+                )}
               </div>
             ))}
           </div>

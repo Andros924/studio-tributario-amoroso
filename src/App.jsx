@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // Rimuovi BrowserRouter qui
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -12,6 +12,7 @@ import Pubblicazioni from "./pages/Pubblicazioni";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/Privacy";
 import TermsConditions from "./pages/Terms";
+import RegistrazionePreliminare from "./pages/RegistrazionePreliminare"; // Nuova pagina
 
 function App() {
   return (
@@ -22,12 +23,15 @@ function App() {
         <Route path="/chi-siamo" element={<ChiSiamo />} />
         <Route path="/servizi" element={<Servizi />} />
         <Route path="/blog/*" element={<Blog />} />
-        {/* Modifica: usa lo slug invece dell'id */}
         <Route path="/blog/:slug" element={<DettaglioArticolo />} />
         <Route path="/contatti" element={<Contatti />} />
         <Route path="/pubblicazioni" element={<Pubblicazioni />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsConditions />} />
+        <Route
+          path="/registrazione-preliminare"
+          element={<RegistrazionePreliminare />}
+        />
       </Routes>
       <Footer />
     </>
