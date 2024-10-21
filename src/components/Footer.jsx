@@ -4,12 +4,12 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10">
+    <footer className="bg-gray-900 text-white py-8 sm:py-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Sezione: Informazioni */}
-          <div className="text-center md:text-left">
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-semibold mb-4">Informazioni</h3>
             <p className="mb-2">Studio Tributarista Amoroso</p>
             <p className="mb-2">Via villa rosato, 28</p>
@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
 
           {/* Sezione: Navigazione */}
-          <div className="text-center md:text-left">
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-semibold mb-4">Navigazione</h3>
             <ul className="space-y-2">
               <li><Link to="/" className="hover:text-blue-400 transition duration-300">Home</Link></li>
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
 
           {/* Sezione: Legal */}
-          <div className="text-center md:text-left">
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li><Link to="/privacy" className="hover:text-blue-400 transition duration-300">Privacy Policy</Link></li>
@@ -40,10 +40,10 @@ const Footer = () => {
           </div>
 
           {/* Sezione: Contatti e Social */}
-          <div className="text-center md:text-left">
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-semibold mb-4">Contatti e Social</h3>
             <p className="mb-4">Email: <a href="mailto:studiotrib.amoroso@gmail.com" className="text-blue-400 hover:underline">studiotrib.amoroso@gmail.com</a></p>
-            <div className="flex justify-center md:justify-start space-x-4 mb-4">
+            <div className="flex justify-center sm:justify-start space-x-4 mb-4">
               <a href="https://www.facebook.com/studiotributarioAmoroso/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 transition duration-300">
                 <FaFacebookF size={24} />
               </a>
@@ -63,8 +63,8 @@ const Footer = () => {
 
         {/* Linea divisoria */}
         <div className="border-t border-gray-700 mt-8 pt-6 text-center">
-          <p>© {new Date().getFullYear()} Studio Tributario Alessandro Amoroso. Tutti i diritti riservati.</p>
-          <p className="text-sm mt-2">Partita IVA: 06955710824</p>
+          <p className="text-sm sm:text-base">© {new Date().getFullYear()} Studio Tributario Alessandro Amoroso. Tutti i diritti riservati.</p>
+          <p className="text-xs sm:text-sm mt-2">Partita IVA: 06955710824</p>
         </div>
       </div>
     </footer>
