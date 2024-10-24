@@ -10,6 +10,7 @@ const CalcoloPreliminare = () => {
     caparra: "",
     copie: 2,
     dataSottoscrizione: "",
+    indirizzoImmobiliare: "" // New field for property address
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,9 +26,7 @@ const CalcoloPreliminare = () => {
   };
 
   const formatInputNumber = (value) => {
-    // Remove any non-digit characters
     const digitsOnly = value.replace(/\D/g, '');
-    // Format the number with thousands separator
     return digitsOnly.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
@@ -65,13 +64,13 @@ const CalcoloPreliminare = () => {
 
     let percentualeSanzione = 0;
     if (giorniRitardo <= 90) {
-      percentualeSanzione = 0.12; // 12% entro 90 giorni
+      percentualeSanzione = 0.12;
     } else if (giorniRitardo <= 365) {
-      percentualeSanzione = 0.16; // 16% entro un anno
+      percentualeSanzione = 0.16;
     } else if (giorniRitardo <= 730) {
-      percentualeSanzione = 0.1714; // 17,14% entro due anni
+      percentualeSanzione = 0.1714;
     } else {
-      percentualeSanzione = 0.20; // 20% oltre due anni
+      percentualeSanzione = 0.20;
     }
 
     const sanzioneCalcolata = importoTotale * percentualeSanzione;
@@ -86,7 +85,11 @@ const CalcoloPreliminare = () => {
   };
 
   const generaPDF = (importoTotale, sanzioneTotale) => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4"
+    });
     
     let testo = `
       Ciao ${formData.nome},
@@ -109,17 +112,39 @@ const CalcoloPreliminare = () => {
       Costo totale${sanzioneTotale > 0 ? ' (Imposte + Sanzioni + Compenso)' : ' (Imposte + Compenso)'}: € ${formatNumber(importoTotale + sanzioneTotale + 40)}
 
       Per procedere alla registrazione, ti chiedo di far effettuare un bonifico del totale di € ${formatNumber(importoTotale + sanzioneTotale + 40)}.
+
+      **Dati per il bonifico**:
+      IBAN: IT47C0100504603000000006186
+      Intestato a: Alessandro Amoroso
+      Causale: Registrazione preliminare vendita - ${formData.indirizzoImmobiliare}
+
+      Note:
+
+      - Nella ricevuta di registrazione sarà indicato "1 FOGLIO". Questo significa che il costo per l'imposta di bollo si riferisce a un foglio protocollo composto da 4 pagine, indipendentemente dal numero di pagine effettivamente scritte.
+      - Una volta ricevuto il bonifico, provvederò tempestivamente alla registrazione del preliminare.
+      - In ogni caso, devi inviarmi la documentazione via mail alla quale ti risponderò con il calcolo definitivo che ti confermerà quanto scritto qui. In allegato, ci sarà il modello RAP.
     `;
 
     const pageWidth = doc.internal.pageSize.getWidth();
-    doc.setFontSize(12);
-    const lines = doc.splitTextToSize(testo, pageWidth - 20);
+    const margin = 10; // Small margin
+    const maxLineWidth = pageWidth - margin * 2;
+    
+    // Configure text properties for justification
+    doc.setFontSize(10); // Slightly smaller text to fit the page
+    doc.setLineHeightFactor(1.2); // Make the text a bit more compact
+    
+    const lines = doc.splitTextToSize(testo, maxLineWidth); // Fit the text within page width
+    
+    let y = 20; // Start position from top
+    
     lines.forEach((line, index) => {
-      const textWidth = doc.getStringUnitWidth(line) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-      doc.text((pageWidth - textWidth) / 2, 20 + index * 10, line);
+      doc.text(line, margin, y, { align: "justify" }); // Justified text
+      y += 5; // Adjust line height
     });
 
     doc.save("riepilogo_preliminare.pdf");
+
+    return testo; // Return the text for email
   };
 
   const handleSubmit = (e) => {
@@ -132,7 +157,7 @@ const CalcoloPreliminare = () => {
     setImportoTotale(importoTotaleCalcolato);
     setSanzione(sanzioneTotaleCalcolata);
 
-    generaPDF(importoTotaleCalcolato, sanzioneTotaleCalcolata);
+    const pdfContent = generaPDF(importoTotaleCalcolato, sanzioneTotaleCalcolata); // Get PDF text
 
     emailjs
       .send(
@@ -140,7 +165,7 @@ const CalcoloPreliminare = () => {
         "template_wt7hqwt",
         {
           from_name: formData.nome,
-          message: `Ciao ${formData.nome}, l'importo totale per la registrazione${sanzioneTotaleCalcolata > 0 ? ' (comprese sanzioni)' : ''} è di € ${formatNumber(importoTotaleCalcolato + sanzioneTotaleCalcolata + 40)}`,
+          message: pdfContent, // Include the entire PDF content in the email body
         },
         "UW7DFNb0RM1fdlcrn"
       )
@@ -180,7 +205,7 @@ const CalcoloPreliminare = () => {
 
           <div className="space-y-2">
             <label className="block text-sm md:text-base text-gray-700 font-medium">
-              Valore Vendita (€):
+              Prezzo di vendita (€):
             </label>
             <input
               type="text"
@@ -231,6 +256,20 @@ const CalcoloPreliminare = () => {
               type="date"
               name="dataSottoscrizione"
               value={formData.dataSottoscrizione}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm md:text-base"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm md:text-base text-gray-700 font-medium">
+              Indirizzo dell'immobile:
+            </label>
+            <input
+              type="text"
+              name="indirizzoImmobiliare"
+              value={formData.indirizzoImmobiliare}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm md:text-base"
               required
