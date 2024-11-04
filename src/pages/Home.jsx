@@ -16,7 +16,7 @@ import heroOffice from "../assets/images/hero-office.jpg";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showCookieBanner, setShowCookieBanner] = useState(true); // Gestione banner cookie
+  const [showCookieBanner, setShowCookieBanner] = useState(true);
   const images = [carousel1, carousel2, carousel3];
 
   useEffect(() => {
@@ -54,7 +54,8 @@ const Home = () => {
     "Pianificazione fiscale",
     "Contabilità aziendale",
     "Assistenza in caso di controlli fiscali",
-    "Registrazioni preliminari", // Aggiunto il servizio "Registrazioni preliminari"
+    "Registrazioni preliminari",
+    "Successioni e registrazione", // Nuovo servizio aggiunto qui
   ];
 
   return (
@@ -185,9 +186,9 @@ const Home = () => {
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <CheckIcon className="w-8 h-8 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{servizio}</h3>
-                {servizio === "Registrazioni preliminari" ? (
+                {servizio === "Successioni e registrazione" ? (
                   <Link
-                    to="/registrazione-preliminare" // Link alla nuova pagina
+                    to="/successioni" // Link diretto alla pagina del servizio "Successioni e registrazione"
                     className="text-blue-500 font-semibold hover:underline flex items-center mt-2"
                   >
                     Vai al servizio <ArrowRightIcon className="w-4 h-4 ml-2" />

@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/Privacy";
 import TermsConditions from "./pages/Terms";
 import RegistrazionePreliminare from "./pages/RegistrazionePreliminare"; // Nuova pagina
+import SuccessioniServizio from "./pages/SuccessioniServizio"; // Import del nuovo componente
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           path="/registrazione-preliminare"
           element={<RegistrazionePreliminare />}
         />
+        <Route path="/successioni" element={<SuccessioniServizio />} /> {/* Nuova route */}
       </Routes>
       <Footer />
     </>
