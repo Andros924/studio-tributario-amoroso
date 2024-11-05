@@ -2,10 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { CalendarIcon, UserIcon, ClockIcon } from "lucide-react";
 import { articoliEvidenza } from "../components/Data";
-import { Helmet } from "react-helmet"; // Importa react-helmet
+import { Helmet } from "react-helmet"; 
 
 const DettaglioArticolo = () => {
-  const { slug } = useParams(); // Usa lo slug per cercare l'articolo
+  const { slug } = useParams(); 
   const articolo = articoliEvidenza.find(
     (article) => article.slug === slug
   );

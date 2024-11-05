@@ -1,6 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom"; // Rimuovi BrowserRouter qui
-
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ChiSiamo from "./pages/ChiSiamo";
@@ -12,8 +11,14 @@ import Pubblicazioni from "./pages/Pubblicazioni";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/Privacy";
 import TermsConditions from "./pages/Terms";
-import RegistrazionePreliminare from "./pages/RegistrazionePreliminare"; // Nuova pagina
-import SuccessioniServizio from "./pages/SuccessioniServizio"; // Import del nuovo componente
+import RegistrazionePreliminare from "./pages/RegistrazionePreliminare";
+import SuccessioniServizio from "./pages/SuccessioniServizio";
+import ConsulenzaFiscale from "./pages/ConsulenzaFiscale";
+import DichiarazioneRedditi from "./pages/DichiarazioneRedditi";
+import PianificazioneFiscale from "./pages/PianificazioneFiscale";
+import ContabilitaFiscale from "./pages/ContabilitaFiscale";
+import AssistenzaControlliFiscali from "./pages/AssistenzaControlliFiscali";
+import ContrattoLocazione from "./pages/ContrattoLocazione";
 
 function App() {
   return (
@@ -33,7 +38,22 @@ function App() {
           path="/registrazione-preliminare"
           element={<RegistrazionePreliminare />}
         />
-        <Route path="/successioni" element={<SuccessioniServizio />} /> {/* Nuova route */}
+        <Route path="/successioni-servizio" element={<SuccessioniServizio />} />
+        <Route path="/consulenza-fiscale" element={<ConsulenzaFiscale />} />
+        <Route
+          path="/dichiarazione-redditi"
+          element={<DichiarazioneRedditi />}
+        />
+        <Route
+          path="/pianificazione-fiscale"
+          element={<PianificazioneFiscale />}
+        />
+        <Route path="/contabilita-aziendale" element={<ContabilitaFiscale />} />
+        <Route
+          path="/assistenza-controlli"
+          element={<AssistenzaControlliFiscali />}
+        />
+        <Route path="/contratto-locazione" element={<ContrattoLocazione />} />
       </Routes>
       <Footer />
     </>

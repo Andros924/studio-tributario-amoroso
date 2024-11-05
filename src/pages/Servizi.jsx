@@ -13,6 +13,7 @@ const Servizi = () => {
         "Strategie di ottimizzazione fiscale su misura",
         "Aggiornamenti continui sulle novità fiscali",
       ],
+      path: "/consulenza-fiscale",
     },
     {
       titolo: "Dichiarazione dei Redditi",
@@ -23,6 +24,7 @@ const Servizi = () => {
         "Riduzione del rischio di errori e sanzioni",
         "Assistenza in caso di controlli da parte dell'Agenzia delle Entrate",
       ],
+      path: "/dichiarazione-redditi",
     },
     {
       titolo: "Pianificazione Fiscale",
@@ -33,9 +35,10 @@ const Servizi = () => {
         "Pianificazione delle successioni",
         "Strategie per la gestione del patrimonio",
       ],
+      path: "/pianificazione-fiscale",
     },
     {
-      titolo: "Contabilità Aziendale",
+      titolo: "Contabilità",
       descrizione:
         "Gestiamo la contabilità della tua azienda, garantendo precisione, conformità alle normative e reportistica tempestiva per supportare le tue decisioni aziendali.",
       vantaggi: [
@@ -43,6 +46,7 @@ const Servizi = () => {
         "Preparazione di bilanci e report finanziari",
         "Analisi finanziarie per il supporto decisionale",
       ],
+      path: "/contabilita-aziendale",
     },
     {
       titolo: "Assistenza in Caso di Controlli Fiscali",
@@ -53,6 +57,40 @@ const Servizi = () => {
         "Preparazione e revisione della documentazione richiesta",
         "Negoziazione di eventuali accordi o piani di rateizzazione",
       ],
+      path: "/assistenza-controlli",
+    },
+    {
+      titolo: "Registrazione Preliminare",
+      descrizione:
+        "Ti aiutiamo con la registrazione preliminare dei contratti di compravendita, garantendo conformità alle normative e una gestione professionale del processo.",
+      vantaggi: [
+        "Supporto nella preparazione della documentazione",
+        "Consulenza sulle implicazioni fiscali",
+        "Assistenza durante l'intero processo di registrazione",
+      ],
+      path: "/registrazione-preliminare",
+    },
+    {
+      titolo: "Stesura e Registrazione Contratto di Locazione",
+      descrizione:
+        "Offriamo assistenza completa per la stesura e registrazione dei contratti di locazione, garantendo conformità legale e tutela per locatori e inquilini.",
+      vantaggi: [
+        "Redazione professionale del contratto di locazione",
+        "Gestione della registrazione presso l'Agenzia delle Entrate",
+        "Consulenza su opzioni fiscali come la cedolare secca",
+      ],
+      path: "/contratto-locazione",
+    },
+    {
+      titolo: "Successioni e Registrazione",
+      descrizione:
+        "Offriamo assistenza nella gestione delle successioni e della registrazione delle relative pratiche, per garantire una transizione senza intoppi.",
+      vantaggi: [
+        "Consulenza esperta per la pianificazione successoria",
+        "Preparazione e registrazione degli atti necessari",
+        "Assistenza personalizzata durante l'intero processo",
+      ],
+      path: "/successioni-servizio",
     },
   ];
 
@@ -88,7 +126,7 @@ const Servizi = () => {
               </div>
               <div className="bg-gray-50 px-6 py-4 text-center md:text-left">
                 <Link
-                  to="/contatti"
+                  to={servizio.path || "/contatti"}
                   className="text-blue-500 font-semibold hover:text-blue-900 transition duration-300 flex items-center justify-center md:justify-start"
                 >
                   Richiedi una consulenza per questo servizio

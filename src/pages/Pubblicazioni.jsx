@@ -7,7 +7,7 @@ const pubblicazioni = [
     anno: 2024,
     immagine: "/assets/images/LIBRO_1.jpg",
     descrizione:
-      "Il libro offre una guida completa alla dichiarazione dei redditi delle persone fisiche, con particolare attenzione alle detrazioni, deduzioni, flat tax incrementale e novità ISA 2023. Un valido strumento per professionisti e contribuenti che desiderano ottimizzare la propria posizione fiscale.",
+      "Guida completa alla dichiarazione dei redditi delle persone fisiche, con focus su detrazioni, deduzioni e novità ISA 2023.",
     link: "https://www.amazon.it/gp/product/B0D9KDN24N",
   },
   {
@@ -16,8 +16,26 @@ const pubblicazioni = [
     anno: 2024,
     immagine: "/assets/images/LIBRO_2.jpg",
     descrizione:
-      "Una guida aggiornata per imprenditori e professionisti sui crediti d'imposta in Italia. Esplora le novità fiscali 2024, le agevolazioni per investimenti nelle ZES e bonus edilizi, con esempi pratici e best practices per una gestione fiscale sicura e ottimizzata.",
+      "Guida per imprenditori e professionisti sui crediti d'imposta e novità fiscali 2024, con esempi pratici e strategie.",
     link: "https://www.amazon.it/dp/B0DKQVG3ZG",
+  },
+  {
+    titolo: "Riciclaggio, segnalazione di operazioni sospette e reati fiscali",
+    autore: "ALESSANDRO AMOROSO",
+    anno: 2024,
+    immagine: "/assets/images/LIBRO_3.jpg",
+    descrizione:
+      "Analisi completa sul riciclaggio e sui reati fiscali, con focus su indicatori di anomalia e ruolo dei professionisti come gatekeeper.",
+    link: "https://www.amazon.it/dp/B0DLVC2NXW",
+  },
+  {
+    titolo: "Fiscalità Internazionale: Strumenti e Strategie per la Compilazione del Modello Redditi 2024",
+    autore: "ALESSANDRO AMOROSO",
+    anno: 2024,
+    immagine: "/assets/images/LIBRO_4.jpg",
+    descrizione:
+      "Guida alla fiscalità internazionale e alla compilazione del Modello Redditi, con focus su criptoattività, Quadro RW e convenzioni bilaterali.",
+    link: "https://www.amazon.it/dp/B0DLV9Z75Q",
   },
 ];
 
@@ -25,7 +43,6 @@ const Pubblicazioni = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Filtra i libri in base al termine di ricerca
   const libriFiltrati = pubblicazioni.filter((libro) => {
     const term = searchTerm.toLowerCase();
     return (
@@ -41,7 +58,7 @@ const Pubblicazioni = () => {
       <section className="lg:col-span-2 bg-white p-6 rounded shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Chi è Alessandro Amoroso</h2>
         <p className="text-gray-700 mb-6">
-          Alessandro Amoroso è un tributarista professionista qualificato ai sensi della legge n.4 del 14 gennaio 2013, appassionato di economia e dedito a gestire con professionalità i propri clienti, offrendo soluzioni fiscali personalizzate e aggiornate.
+          Alessandro Amoroso è un tributarista qualificato ai sensi della legge n.4 del 14 gennaio 2013, con esperienza in economia e fiscalità, offrendo soluzioni personalizzate e aggiornate.
         </p>
 
         {/* Card Visualizzata al Click */}

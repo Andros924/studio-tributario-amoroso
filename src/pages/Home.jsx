@@ -49,13 +49,20 @@ const Home = () => {
   };
 
   const servizi = [
-    "Consulenza fiscale",
-    "Dichiarazione dei redditi",
-    "Pianificazione fiscale",
-    "Contabilità aziendale",
-    "Assistenza in caso di controlli fiscali",
-    "Registrazioni preliminari",
-    "Successioni e registrazione", // Nuovo servizio aggiunto qui
+    { nome: "Consulenza fiscale", path: "/consulenza-fiscale" },
+    { nome: "Dichiarazione dei redditi", path: "/dichiarazione-redditi" },
+    { nome: "Pianificazione fiscale", path: "/pianificazione-fiscale" },
+    { nome: "Contabilità", path: "/contabilita-aziendale" },
+    {
+      nome: "Assistenza in caso di controlli fiscali",
+      path: "/assistenza-controlli",
+    },
+    { nome: "Registrazioni preliminari", path: "/registrazione-preliminare" },
+    {
+      nome: "Stesura e Registrazione Contratto di Locazione",
+      path: "/contratto-locazione",
+    },
+    { nome: "Successioni", path: "/successioni-servizio" },
   ];
 
   return (
@@ -185,20 +192,13 @@ const Home = () => {
             {servizi.map((servizio, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <CheckIcon className="w-8 h-8 text-blue-500 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{servizio}</h3>
-                {servizio === "Successioni e registrazione" ? (
-                  <Link
-                    to="/successioni" // Link diretto alla pagina del servizio "Successioni e registrazione"
-                    className="text-blue-500 font-semibold hover:underline flex items-center mt-2"
-                  >
-                    Vai al servizio <ArrowRightIcon className="w-4 h-4 ml-2" />
-                  </Link>
-                ) : (
-                  <p className="text-gray-600">
-                    Offriamo soluzioni personalizzate per ogni tua esigenza
-                    fiscale.
-                  </p>
-                )}
+                <h3 className="text-xl font-semibold mb-2">{servizio.nome}</h3>
+                <Link
+                  to={servizio.path}
+                  className="text-blue-500 font-semibold hover:underline flex items-center mt-2"
+                >
+                  Vai al servizio <ArrowRightIcon className="w-4 h-4 ml-2" />
+                </Link>
               </div>
             ))}
           </div>
@@ -219,7 +219,7 @@ const Home = () => {
                 </h3>
                 <p className="text-gray-600 mb-4">{articolo.excerpt}</p>
                 <Link
-                  to={`/blog/${articolo.slug}`} // Usa lo slug invece dell'id
+                  to={`/blog/${articolo.slug}`}
                   className="text-blue-500 font-semibold hover:underline flex items-center"
                 >
                   Leggi di più <ArrowRightIcon className="w-4 h-4 ml-2" />
