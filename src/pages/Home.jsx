@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -67,6 +68,20 @@ const Home = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      <Helmet>
+        <title>Soluzioni Fiscali su Misura a Palermo | Assistenza Fiscale</title>
+        <meta
+          name="description"
+          content="Naviga nel complesso mondo fiscale con i nostri esperti a Palermo. Offriamo consulenza fiscale, dichiarazioni dei redditi, e pianificazione fiscale personalizzata."
+        />
+        <meta
+          name="keywords"
+          content="consulenza fiscale Palermo, dichiarazione redditi, pianificazione fiscale, assistenza fiscale Palermo, servizi contabili"
+        />
+        <meta name="author" content="Your Company Name" />
+        <link rel="canonical" href="https://studiofiscaleamoroso.com/" />
+      </Helmet>
+
       {/* Cookie Banner */}
       {showCookieBanner && (
         <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-4 px-6 flex justify-between items-center">

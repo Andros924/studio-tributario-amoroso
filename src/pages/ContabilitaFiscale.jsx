@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/images/contabilita-fiscale-hero.jpg"; // Aggiungi un'immagine adeguata nella cartella assets/images
+import heroImage from "../assets/images/contabilita-fiscale-hero.jpg";
 
 const ContabilitaFiscale = () => {
   return (

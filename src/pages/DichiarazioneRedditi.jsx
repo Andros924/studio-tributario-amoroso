@@ -1,12 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import heroImage from "../assets/images/dichiarazione-redditi-hero.jpg";
 
 const DichiarazioneRedditi = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Dichiarazione dei Redditi | Supporto Tributario</title>
+        <meta
+          name="description"
+          content="Scopri come gestire la dichiarazione dei redditi in modo semplice e sicuro con il supporto di un tributarista esperto."
+        />
+        <meta
+          name="keywords"
+          content="dichiarazione dei redditi, tributarista, detrazioni fiscali, deduzioni fiscali, assistenza fiscale, gestione scadenze"
+        />
+        <meta name="author" content="Studio Tributario" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
       {/* Hero Section */}
-      <div
+      <header
         className="relative w-full h-64 bg-cover bg-center mb-12"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -15,10 +31,10 @@ const DichiarazioneRedditi = () => {
             Dichiarazione dei Redditi
           </h1>
         </div>
-      </div>
+      </header>
 
       {/* Introduzione */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
         <h2 className="text-3xl font-bold text-blue-900 mb-6">
           Cos'è la Dichiarazione dei Redditi?
         </h2>
@@ -35,12 +51,11 @@ const DichiarazioneRedditi = () => {
           fiscale. Con l’assistenza di un professionista qualificato, la
           gestione della dichiarazione diventa più semplice e sicura.
         </p>
-      </div>
+      </section>
 
       {/* Sezioni Tematiche */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        {/* Modalità di Compilazione */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Modalità di Compilazione
           </h3>
@@ -50,10 +65,9 @@ const DichiarazioneRedditi = () => {
             interpretazione delle normative fiscali, minimizzando il rischio di
             errori e di successive sanzioni.
           </p>
-        </div>
+        </article>
 
-        {/* Detrazioni e Deduzioni Fiscali */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Detrazioni e Deduzioni Fiscali
           </h3>
@@ -63,10 +77,9 @@ const DichiarazioneRedditi = () => {
             agevolazioni applicabili alla tua situazione, massimizzando il
             risparmio fiscale in maniera legale.
           </p>
-        </div>
+        </article>
 
-        {/* Gestione delle Scadenze */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Gestione delle Scadenze
           </h3>
@@ -76,10 +89,9 @@ const DichiarazioneRedditi = () => {
             rispettare tutte le tempistiche stabilite dalla legge, evitando
             ritardi e sovrapposizioni.
           </p>
-        </div>
+        </article>
 
-        {/* Assistenza in Caso di Controlli */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Assistenza in Caso di Controlli
           </h3>
@@ -89,11 +101,11 @@ const DichiarazioneRedditi = () => {
             l'Agenzia delle Entrate, assicurando che ogni aspetto della
             dichiarazione sia corretto e documentato.
           </p>
-        </div>
-      </div>
+        </article>
+      </section>
 
       {/* Conclusione */}
-      <div className="bg-blue-900 text-white py-12 text-center">
+      <section className="bg-blue-900 text-white py-12 text-center">
         <h2 className="text-3xl font-bold mb-4">
           Richiedi Assistenza per la tua Dichiarazione dei Redditi
         </h2>
@@ -109,7 +121,7 @@ const DichiarazioneRedditi = () => {
         >
           Contattaci Ora
         </Link>
-      </div>
+      </section>
     </div>
   );
 };

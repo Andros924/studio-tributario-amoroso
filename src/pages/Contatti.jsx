@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
+import { Helmet } from "react-helmet";
 import emailjs from "emailjs-com"; // Importa EmailJS
 
 const Contatti = () => {
@@ -10,7 +11,7 @@ const Contatti = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Indicatore di invio
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -19,49 +20,61 @@ const Contatti = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true); // Avvia il caricamento
+    setIsLoading(true);
 
     emailjs
       .send(
         "service_7oxppdw", // Service ID
         "template_wt7hqwt", // Template ID
         {
-          from_name: formData.nome, // Nome di chi invia il messaggio
-          from_email: formData.email, // Email di chi invia il messaggio
-          message: formData.messaggio, // Messaggio inviato
+          from_name: formData.nome,
+          from_email: formData.email,
+          message: formData.messaggio,
         },
         "UW7DFNb0RM1fdlcrn" // Public Key
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
           setIsSubmitted(true);
-          setIsLoading(false); // Ferma il caricamento
+          setIsLoading(false);
           setFormData({ nome: "", email: "", messaggio: "" });
         },
         (err) => {
-          console.error("FAILED...", err);
           setError("Si è verificato un errore. Riprova più tardi.");
-          setIsLoading(false); // Ferma il caricamento in caso di errore
+          setIsLoading(false);
         }
       );
   };
 
   return (
     <div className="bg-gray-100 min-h-screen py-12">
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Contattaci | Studio Tributario Alessandro Amoroso</title>
+        <meta
+          name="description"
+          content="Contattaci per una consulenza fiscale personalizzata. Invia un messaggio o visita il nostro ufficio a Palermo. Siamo a tua disposizione."
+        />
+        <meta
+          name="keywords"
+          content="contattaci, consulenza fiscale, studio tributario, Alessandro Amoroso, Palermo, supporto fiscale"
+        />
+        <meta name="author" content="Studio Tributario Alessandro Amoroso" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-700 mb-12">
           Contattaci
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Form di contatto */}
-          <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
+          {/* Form di Contatto */}
+          <section className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-blue-900 mb-6">
               Inviaci un messaggio
             </h2>
 
-            {/* Notifica di successo */}
             {isSubmitted && (
               <p className="text-green-500 mb-4">
                 Messaggio inviato con successo!
@@ -123,7 +136,7 @@ const Contatti = () => {
               </div>
               <button
                 type="submit"
-                disabled={isLoading} // Disabilita il pulsante durante l'invio
+                disabled={isLoading}
                 className={`w-full bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ${
                   isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
@@ -131,10 +144,10 @@ const Contatti = () => {
                 {isLoading ? "Invio in corso..." : "Invia Messaggio"}
               </button>
             </form>
-          </div>
+          </section>
 
-          {/* Informazioni di contatto */}
-          <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
+          {/* Informazioni di Contatto */}
+          <section className="bg-white shadow-lg rounded-lg p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-blue-900 mb-6">
               I nostri contatti
             </h2>
@@ -161,16 +174,11 @@ const Contatti = () => {
                 Orari di apertura
               </h3>
               <ul className="text-gray-700">
-                <li>Lunedì: 9:00 - 18:00</li>
-                <li>Martedì: 9:00 - 18:00</li>
-                <li>Mercoledì: 9:00 - 18:00</li>
-                <li>Giovedì: 9:00 - 18:00</li>
-                <li>Venerdì: 9:00 - 18:00</li>
-                <li>Sabato: Chiuso</li>
-                <li>Domenica: Chiuso</li>
+                <li>Lunedì - Venerdì: 9:00 - 18:00</li>
+                <li>Sabato e Domenica: Chiuso</li>
               </ul>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

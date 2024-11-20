@@ -1,12 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import heroImage from "../assets/images/contratto-locazione-hero.jpg";
 
 const ContrattoLocazione = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Contratto di Locazione | Stesura e Registrazione</title>
+        <meta
+          name="description"
+          content="Assistenza completa per la stesura e registrazione del contratto di locazione, inclusa consulenza su cedolare secca, modifiche e risoluzioni."
+        />
+        <meta
+          name="keywords"
+          content="contratto di locazione, stesura contratto, registrazione contratto, cedolare secca, Agenzia delle Entrate, modifiche contratto"
+        />
+        <meta name="author" content="Studio Tributario Alessandro Amoroso" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
       {/* Hero Section */}
-      <div
+      <header
         className="relative w-full h-64 bg-cover bg-center mb-12"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -15,10 +31,10 @@ const ContrattoLocazione = () => {
             Stesura e Registrazione del Contratto di Locazione
           </h1>
         </div>
-      </div>
+      </header>
 
       {/* Introduzione */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
         <h2 className="text-3xl font-bold text-blue-900 mb-6">
           Servizio di Stesura e Registrazione del Contratto
         </h2>
@@ -28,12 +44,11 @@ const ContrattoLocazione = () => {
           servizio ti supporta in tutte le fasi, dalla redazione del contratto
           alla registrazione presso l'Agenzia delle Entrate.
         </p>
-      </div>
+      </section>
 
       {/* Sezioni Tematiche */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        {/* Stesura del Contratto di Locazione */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Stesura del Contratto di Locazione
           </h3>
@@ -45,10 +60,9 @@ const ContrattoLocazione = () => {
             che il contratto rispetti tutte le normative vigenti, incluse quelle
             riguardanti l'attestato di prestazione energetica (APE).
           </p>
-        </div>
+        </article>
 
-        {/* Registrazione presso l'Agenzia delle Entrate */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Registrazione presso l'Agenzia delle Entrate
           </h3>
@@ -59,10 +73,9 @@ const ContrattoLocazione = () => {
             la verifica e pagamento delle imposte di bollo e registro. In
             alternativa, possiamo effettuare la registrazione in ufficio.
           </p>
-        </div>
+        </article>
 
-        {/* Opzione Cedolare Secca */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Opzione Cedolare Secca
           </h3>
@@ -72,10 +85,9 @@ const ContrattoLocazione = () => {
             consente di evitare le imposte di registro e bollo, applicando
             un'imposta sostitutiva sul reddito da locazione.
           </p>
-        </div>
+        </article>
 
-        {/* Consulenza per la Risoluzione e Modifiche del Contratto */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Consulenza su Risoluzioni e Modifiche Contrattuali
           </h3>
@@ -85,11 +97,11 @@ const ContrattoLocazione = () => {
             e la comunicazione delle variazioni all'Agenzia delle Entrate,
             garantendo la conformità fiscale e amministrativa.
           </p>
-        </div>
-      </div>
+        </article>
+      </section>
 
       {/* Conclusione */}
-      <div className="bg-blue-900 text-white py-12 text-center">
+      <section className="bg-blue-900 text-white py-12 text-center">
         <h2 className="text-3xl font-bold mb-4">
           Richiedi Assistenza per il tuo Contratto di Locazione
         </h2>
@@ -103,7 +115,7 @@ const ContrattoLocazione = () => {
         >
           Contattaci Ora
         </Link>
-      </div>
+      </section>
     </div>
   );
 };

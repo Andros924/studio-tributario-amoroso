@@ -1,11 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import heroImage from "../assets/images/consulenza-fiscale-hero.jpg";
+
 const ConsulenzaFiscale = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Consulenza Fiscale | Supporto Tributario per Privati e Aziende</title>
+        <meta
+          name="description"
+          content="Scopri come la consulenza fiscale di Alessandro Amoroso, tributarista qualificato, può aiutarti a gestire e ottimizzare i tuoi obblighi fiscali con soluzioni personalizzate."
+        />
+        <meta
+          name="keywords"
+          content="consulenza fiscale, tributarista, pianificazione fiscale, ottimizzazione imposte, gestione patrimoniale, verifiche fiscali"
+        />
+        <meta name="author" content="Alessandro Amoroso" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
       {/* Hero Section */}
-      <div
+      <header
         className="relative w-full h-64 bg-cover bg-center mb-12"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -14,10 +31,10 @@ const ConsulenzaFiscale = () => {
             Consulenza Fiscale
           </h1>
         </div>
-      </div>
+      </header>
 
       {/* Introduzione */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 mb-12">
         <h2 className="text-3xl font-bold text-blue-900 mb-6">Chi Sono</h2>
         <p className="text-lg text-gray-700 mb-4">
           Mi chiamo Alessandro Amoroso, tributarista qualificato iscritto alla
@@ -30,12 +47,11 @@ const ConsulenzaFiscale = () => {
           aggiornato e strategico, aiuto i miei clienti a navigare nel complesso
           mondo della fiscalità con sicurezza e vantaggi tangibili.
         </p>
-      </div>
+      </section>
 
       {/* Sezioni Tematiche */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        {/* Pianificazione Fiscale */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Pianificazione Fiscale
           </h3>
@@ -46,10 +62,9 @@ const ConsulenzaFiscale = () => {
             soluzioni personalizzate che aiutano a ridurre le imposte in modo
             legale, sfruttando le deduzioni e agevolazioni disponibili.
           </p>
-        </div>
+        </article>
 
-        {/* Ottimizzazione delle Imposte */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Ottimizzazione delle Imposte
           </h3>
@@ -60,10 +75,9 @@ const ConsulenzaFiscale = () => {
             e dei redditi per garantire il pagamento delle imposte corrette,
             senza eccedenze.
           </p>
-        </div>
+        </article>
 
-        {/* Assistenza nelle Verifiche Fiscali */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Assistenza nelle Verifiche Fiscali
           </h3>
@@ -74,10 +88,9 @@ const ConsulenzaFiscale = () => {
             rapidamente le verifiche e a gestire le comunicazioni con le
             autorità fiscali per evitare sanzioni.
           </p>
-        </div>
+        </article>
 
-        {/* Consulenza per la Gestione Patrimoniale */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <article className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-semibold text-blue-900 mb-4">
             Gestione Patrimoniale e Pianificazione Successoria
           </h3>
@@ -87,11 +100,11 @@ const ConsulenzaFiscale = () => {
             possibile ridurre le imposte di successione e facilitare il
             trasferimento di beni e capitali ai propri eredi.
           </p>
-        </div>
-      </div>
+        </article>
+      </section>
 
       {/* Conclusione */}
-      <div className="bg-blue-900 text-white py-12 text-center">
+      <section className="bg-blue-900 text-white py-12 text-center">
         <h2 className="text-3xl font-bold mb-4">
           Richiedi una Consulenza Fiscale
         </h2>
@@ -107,7 +120,7 @@ const ConsulenzaFiscale = () => {
         >
           Contattaci Ora
         </Link>
-      </div>
+      </section>
     </div>
   );
 };

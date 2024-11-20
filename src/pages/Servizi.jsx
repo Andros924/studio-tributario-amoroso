@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { CheckCircleIcon, ArrowRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -96,11 +97,25 @@ const Servizi = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-12">
+      <Helmet>
+        <title>Servizi | Studio Tributarista Alessandro Amoroso</title>
+        <meta
+          name="description"
+          content="Scopri i servizi offerti dallo Studio Tributarista Alessandro Amoroso: consulenza fiscale, dichiarazione dei redditi, pianificazione fiscale, contabilità e molto altro."
+        />
+        <meta
+          name="keywords"
+          content="servizi fiscali, consulenza fiscale, dichiarazione redditi, pianificazione fiscale, assistenza fiscale"
+        />
+        <link rel="canonical" href="https://studiofiscaleamoroso.com/servizi" />
+      </Helmet>
+
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center text-blue-900 mb-12">
           I Nostri Servizi
         </h1>
 
+        {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviziOfferti.map((servizio, index) => (
             <div
@@ -137,7 +152,7 @@ const Servizi = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Call-to-Action */}
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold text-blue-900 mb-4">
             Hai domande sui nostri servizi?
