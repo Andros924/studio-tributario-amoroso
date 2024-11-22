@@ -8,7 +8,9 @@ const ConsulenzaFiscale = () => {
     <div className="bg-gray-100 min-h-screen">
       {/* SEO Metadata */}
       <Helmet>
-        <title>Consulenza Fiscale | Supporto Tributario per Privati e Aziende</title>
+        <title>
+          Consulenza Fiscale | Supporto Tributario per Privati e Aziende
+        </title>
         <meta
           name="description"
           content="Scopri come la consulenza fiscale di Alessandro Amoroso, tributarista qualificato, può aiutarti a gestire e ottimizzare i tuoi obblighi fiscali con soluzioni personalizzate."

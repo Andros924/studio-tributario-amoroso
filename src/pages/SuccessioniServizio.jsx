@@ -8,7 +8,9 @@ const SuccessioniServizio = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Helmet>
-        <title>Servizio Successioni | Studio Tributarista Alessandro Amoroso</title>
+        <title>
+          Servizio Successioni | Studio Tributarista Alessandro Amoroso
+        </title>
         <meta
           name="description"
           content="Offriamo assistenza completa per la gestione delle successioni: dichiarazione, consulenza legale e fiscale, e gestione documentazione."
@@ -17,7 +19,10 @@ const SuccessioniServizio = () => {
           name="keywords"
           content="successioni, dichiarazione di successione, eredità, consulenza fiscale, patrimonio, quote di legittima"
         />
-        <link rel="canonical" href="https://studiofiscaleamoroso.com/successioni-servizio" />
+        <link
+          rel="canonical"
+          href="https://studiofiscaleamoroso.com/successioni-servizio"
+        />
       </Helmet>
 
       {/* Hero Section */}
@@ -88,9 +93,9 @@ const SuccessioniServizio = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 mb-16 text-center">
         <p className="text-lg text-gray-700">
           Contattaci per una consulenza iniziale e scopri come possiamo
-          semplificare la gestione della tua pratica successoria. Il nostro
-          team garantisce un servizio personalizzato, aiutandoti a rispettare
-          tutte le normative fiscali e a proteggere il tuo patrimonio.
+          semplificare la gestione della tua pratica successoria. Il nostro team
+          garantisce un servizio personalizzato, aiutandoti a rispettare tutte
+          le normative fiscali e a proteggere il tuo patrimonio.
         </p>
       </div>
 

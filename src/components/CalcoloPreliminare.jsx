@@ -10,7 +10,7 @@ const CalcoloPreliminare = () => {
     caparra: "",
     copie: 2,
     dataSottoscrizione: "",
-    indirizzoImmobiliare: "" // New field for property address
+    indirizzoImmobiliare: "", // New field for property address
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,34 +19,34 @@ const CalcoloPreliminare = () => {
   const [sanzione, setSanzione] = useState(0);
 
   const formatNumber = (number) => {
-    return number.toLocaleString('it-IT', {
+    return number.toLocaleString("it-IT", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
   };
 
   const formatInputNumber = (value) => {
-    const digitsOnly = value.replace(/\D/g, '');
+    const digitsOnly = value.replace(/\D/g, "");
     return digitsOnly.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   const parseFormattedNumber = (value) => {
-    return parseFloat(value.replace(/\./g, '').replace(',', '.'));
+    return parseFloat(value.replace(/\./g, "").replace(",", "."));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    if (name === 'vendita' || name === 'caparra') {
+
+    if (name === "vendita" || name === "caparra") {
       const formattedValue = formatInputNumber(value);
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
-        [name]: formattedValue
+        [name]: formattedValue,
       }));
     } else {
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -59,7 +59,7 @@ const CalcoloPreliminare = () => {
 
   const calcolaSanzione = (importoTotale) => {
     const giorniRitardo = calcolaGiorniRitardo();
-    
+
     if (giorniRitardo <= 30) return 0;
 
     let percentualeSanzione = 0;
@@ -70,7 +70,7 @@ const CalcoloPreliminare = () => {
     } else if (giorniRitardo <= 730) {
       percentualeSanzione = 0.1714;
     } else {
-      percentualeSanzione = 0.20;
+      percentualeSanzione = 0.2;
     }
 
     const sanzioneCalcolata = importoTotale * percentualeSanzione;
@@ -88,16 +88,18 @@ const CalcoloPreliminare = () => {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "mm",
-      format: "a4"
+      format: "a4",
     });
-    
+
     let testo = `
       Ciao ${formData.nome},
 
       Ti scrivo per fornirti le informazioni relative alle imposte e al mio compenso per la registrazione del preliminare di vendita dell'immobile.
 
       Imposte:
-      Imposta di registro: € ${formatNumber(200 + (parseFormattedNumber(formData.caparra) * 0.005))}
+      Imposta di registro: € ${formatNumber(
+        200 + parseFormattedNumber(formData.caparra) * 0.005
+      )}
       Imposta di bollo: € ${formatNumber(formData.copie * 16)}
       Totale imposte: € ${formatNumber(importoTotale)}
     `;
@@ -109,14 +111,22 @@ const CalcoloPreliminare = () => {
     testo += `
       Compenso professionale: € 40,00
 
-      Costo totale${sanzioneTotale > 0 ? ' (Imposte + Sanzioni + Compenso)' : ' (Imposte + Compenso)'}: € ${formatNumber(importoTotale + sanzioneTotale + 40)}
+      Costo totale${
+        sanzioneTotale > 0
+          ? " (Imposte + Sanzioni + Compenso)"
+          : " (Imposte + Compenso)"
+      }: € ${formatNumber(importoTotale + sanzioneTotale + 40)}
 
-      Per procedere alla registrazione, ti chiedo di far effettuare un bonifico del totale di € ${formatNumber(importoTotale + sanzioneTotale + 40)}.
+      Per procedere alla registrazione, ti chiedo di far effettuare un bonifico del totale di € ${formatNumber(
+        importoTotale + sanzioneTotale + 40
+      )}.
 
       **Dati per il bonifico**:
       IBAN: IT47C0100504603000000006186
       Intestato a: Alessandro Amoroso
-      Causale: Registrazione preliminare vendita - ${formData.indirizzoImmobiliare}
+      Causale: Registrazione preliminare vendita - ${
+        formData.indirizzoImmobiliare
+      }
 
       Note:
 
@@ -128,15 +138,15 @@ const CalcoloPreliminare = () => {
     const pageWidth = doc.internal.pageSize.getWidth();
     const margin = 10; // Small margin
     const maxLineWidth = pageWidth - margin * 2;
-    
+
     // Configure text properties for justification
     doc.setFontSize(10); // Slightly smaller text to fit the page
     doc.setLineHeightFactor(1.2); // Make the text a bit more compact
-    
+
     const lines = doc.splitTextToSize(testo, maxLineWidth); // Fit the text within page width
-    
+
     let y = 20; // Start position from top
-    
+
     lines.forEach((line, index) => {
       doc.text(line, margin, y, { align: "justify" }); // Justified text
       y += 5; // Adjust line height
@@ -157,7 +167,10 @@ const CalcoloPreliminare = () => {
     setImportoTotale(importoTotaleCalcolato);
     setSanzione(sanzioneTotaleCalcolata);
 
-    const pdfContent = generaPDF(importoTotaleCalcolato, sanzioneTotaleCalcolata); // Get PDF text
+    const pdfContent = generaPDF(
+      importoTotaleCalcolato,
+      sanzioneTotaleCalcolata
+    ); // Get PDF text
 
     emailjs
       .send(
@@ -188,7 +201,10 @@ const CalcoloPreliminare = () => {
           Calcolo Importo Preliminare
         </h2>
 
-        <form onSubmit={handleSubmit} className="bg-white p-4 md:p-6 rounded-lg shadow-md space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-4 md:p-6 rounded-lg shadow-md space-y-4"
+        >
           <div className="space-y-2">
             <label className="block text-sm md:text-base text-gray-700 font-medium">
               Nome (se sei un agente metti il tuo nome e non del cliente):
@@ -288,40 +304,57 @@ const CalcoloPreliminare = () => {
         {importoTotale && (
           <div className="mt-6 p-4 md:p-6 bg-green-50 rounded-lg shadow-sm space-y-3">
             <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-4">
-              Riepilogo Imposte{sanzione > 0 ? ' e Sanzioni' : ''}
+              Riepilogo Imposte{sanzione > 0 ? " e Sanzioni" : ""}
             </h3>
-            
+
             <div className="space-y-2 text-sm md:text-base">
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Imposta di registro:</span>
-                <span className="font-medium">€ {formatNumber(200 + (parseFormattedNumber(formData.caparra) * 0.005))}</span>
+                <span className="font-medium">
+                  €{" "}
+                  {formatNumber(
+                    200 + parseFormattedNumber(formData.caparra) * 0.005
+                  )}
+                </span>
               </div>
-              
+
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Imposta di bollo:</span>
-                <span className="font-medium">€ {formatNumber(formData.copie * 16)}</span>
+                <span className="font-medium">
+                  € {formatNumber(formData.copie * 16)}
+                </span>
               </div>
-              
+
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Totale imposte:</span>
-                <span className="font-medium">€ {formatNumber(importoTotale)}</span>
+                <span className="font-medium">
+                  € {formatNumber(importoTotale)}
+                </span>
               </div>
-              
+
               {sanzione > 0 && (
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Sanzione:</span>
-                  <span className="font-medium">€ {formatNumber(sanzione)}</span>
+                  <span className="font-medium">
+                    € {formatNumber(sanzione)}
+                  </span>
                 </div>
               )}
-              
+
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Compenso professionale:</span>
                 <span className="font-medium">€ 40,00</span>
               </div>
-              
+
               <div className="pt-3 border-t border-gray-200">
                 <div className="flex justify-between items-center font-bold text-base md:text-lg">
-                  <span>Importo totale{sanzione > 0 ? ' (Imposte + Sanzioni + Compenso)' : ' (Imposte + Compenso)'}:</span>
+                  <span>
+                    Importo totale
+                    {sanzione > 0
+                      ? " (Imposte + Sanzioni + Compenso)"
+                      : " (Imposte + Compenso)"}
+                    :
+                  </span>
                   <span>€ {formatNumber(importoTotale + sanzione + 40)}</span>
                 </div>
               </div>
@@ -336,7 +369,7 @@ const CalcoloPreliminare = () => {
             </p>
           </div>
         )}
-        
+
         {error && (
           <div className="mt-4 p-4 bg-red-100 rounded-lg">
             <p className="text-red-700 text-center text-sm md:text-base">

@@ -7,13 +7,21 @@ const PianificazioneFiscale = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Helmet>
-        <title>Pianificazione Fiscale | Ottimizza la Tua Strategia Fiscale</title>
+        <title>
+          Pianificazione Fiscale | Ottimizza la Tua Strategia Fiscale
+        </title>
         <meta
           name="description"
           content="Scopri come ridurre il carico fiscale, proteggere il patrimonio e accedere a incentivi fiscali con la nostra consulenza personalizzata."
         />
-        <meta name="keywords" content="pianificazione fiscale, protezione patrimonio, incentivi fiscali, riduzione tasse" />
-        <link rel="canonical" href="https://studiofiscaleamoroso.com/pianificazione-fiscale" />
+        <meta
+          name="keywords"
+          content="pianificazione fiscale, protezione patrimonio, incentivi fiscali, riduzione tasse"
+        />
+        <link
+          rel="canonical"
+          href="https://studiofiscaleamoroso.com/pianificazione-fiscale"
+        />
       </Helmet>
 
       {/* Hero Section */}

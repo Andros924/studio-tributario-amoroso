@@ -17,9 +17,12 @@ const BlogPost = () => {
             content="Spiacenti, l'articolo che stai cercando non è stato trovato. Controlla il nostro blog per altri contenuti interessanti."
           />
         </Helmet>
-        <h1 className="text-3xl font-bold text-gray-700">Articolo non trovato</h1>
+        <h1 className="text-3xl font-bold text-gray-700">
+          Articolo non trovato
+        </h1>
         <p className="text-gray-500 mt-4">
-          Non siamo riusciti a trovare l'articolo richiesto. Prova a tornare alla{" "}
+          Non siamo riusciti a trovare l'articolo richiesto. Prova a tornare
+          alla{" "}
           <a href="/blog" className="text-blue-500 hover:underline">
             lista degli articoli
           </a>
@@ -36,7 +39,10 @@ const BlogPost = () => {
         <meta name="description" content={post.descrizione} />
         <meta name="author" content={post.autore} />
         <meta name="keywords" content={post.keywords} />
-        <link rel="canonical" href={`https://studiofiscaleamoroso.com/blog/${post.slug}`} />
+        <link
+          rel="canonical"
+          href={`https://studiofiscaleamoroso.com/blog/${post.slug}`}
+        />
       </Helmet>
 
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 text-center mb-4">

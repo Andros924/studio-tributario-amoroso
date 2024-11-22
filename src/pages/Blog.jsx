@@ -9,7 +9,9 @@ const Blog = () => {
 
   // Determina il titolo della pagina in base al percorso
   const pageTitle =
-    location.pathname === "/blog" ? "Il Nostro Blog Fiscale" : "Articolo del Blog";
+    location.pathname === "/blog"
+      ? "Il Nostro Blog Fiscale"
+      : "Articolo del Blog";
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -41,7 +43,8 @@ const Blog = () => {
               Il Nostro Blog Fiscale
             </h1>
             <p className="text-center text-gray-600 mt-2">
-              Articoli informativi e approfondimenti per migliorare la tua gestione fiscale.
+              Articoli informativi e approfondimenti per migliorare la tua
+              gestione fiscale.
             </p>
           </header>
         )}
@@ -65,7 +68,10 @@ const Blog = () => {
           <Route
             path="/:slug"
             element={
-              <article aria-labelledby="blog-post" className="bg-white p-6 sm:p-8 rounded-lg shadow-md">
+              <article
+                aria-labelledby="blog-post"
+                className="bg-white p-6 sm:p-8 rounded-lg shadow-md"
+              >
                 <h2 id="blog-post" className="sr-only">
                   Contenuto dell'articolo
                 </h2>

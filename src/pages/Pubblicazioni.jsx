@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const pubblicazioni = [
   {
@@ -29,7 +29,8 @@ const pubblicazioni = [
     link: "https://www.amazon.it/dp/B0DLVC2NXW",
   },
   {
-    titolo: "Fiscalità Internazionale: Strumenti e Strategie per la Compilazione del Modello Redditi 2024",
+    titolo:
+      "Fiscalità Internazionale: Strumenti e Strategie per la Compilazione del Modello Redditi 2024",
     autore: "ALESSANDRO AMOROSO",
     anno: 2024,
     immagine: "/assets/images/LIBRO_4.jpg",
@@ -41,7 +42,7 @@ const pubblicazioni = [
 
 const Pubblicazioni = () => {
   const [selectedBook, setSelectedBook] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const libriFiltrati = pubblicazioni.filter((libro) => {
     const term = searchTerm.toLowerCase();
@@ -58,7 +59,9 @@ const Pubblicazioni = () => {
       <section className="lg:col-span-2 bg-white p-6 rounded shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Chi è Alessandro Amoroso</h2>
         <p className="text-gray-700 mb-6">
-          Alessandro Amoroso è un tributarista qualificato ai sensi della legge n.4 del 14 gennaio 2013, con esperienza in economia e fiscalità, offrendo soluzioni personalizzate e aggiornate.
+          Alessandro Amoroso è un tributarista qualificato ai sensi della legge
+          n.4 del 14 gennaio 2013, con esperienza in economia e fiscalità,
+          offrendo soluzioni personalizzate e aggiornate.
         </p>
 
         {/* Card Visualizzata al Click */}
@@ -70,9 +73,15 @@ const Pubblicazioni = () => {
               className="w-full h-48 object-contain mb-4"
             />
             <h3 className="text-lg font-semibold">{selectedBook.titolo}</h3>
-            <p className="text-sm text-gray-600 mb-1">di {selectedBook.autore}</p>
-            <p className="text-sm text-gray-600 mb-2">Anno: {selectedBook.anno}</p>
-            <p className="text-gray-700 mb-4 text-sm">{selectedBook.descrizione}</p>
+            <p className="text-sm text-gray-600 mb-1">
+              di {selectedBook.autore}
+            </p>
+            <p className="text-sm text-gray-600 mb-2">
+              Anno: {selectedBook.anno}
+            </p>
+            <p className="text-gray-700 mb-4 text-sm">
+              {selectedBook.descrizione}
+            </p>
             <a
               href={selectedBook.link}
               target="_blank"

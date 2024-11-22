@@ -44,9 +44,10 @@ const ChiSiamo = () => {
             delle esigenze dei nostri clienti.
           </p>
           <p className="text-gray-700 mb-4">
-            Offriamo una gamma completa di servizi tributari, dalla pianificazione
-            fiscale strategica alla gestione quotidiana della contabilità, utilizzando
-            strumenti all'avanguardia per risultati ottimali.
+            Offriamo una gamma completa di servizi tributari, dalla
+            pianificazione fiscale strategica alla gestione quotidiana della
+            contabilità, utilizzando strumenti all'avanguardia per risultati
+            ottimali.
           </p>
         </section>
 
@@ -57,7 +58,10 @@ const ChiSiamo = () => {
             aria-labelledby="team-title"
           >
             <UsersIcon className="w-12 h-12 text-blue-900 mb-4" />
-            <h3 id="team-title" className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
+            <h3
+              id="team-title"
+              className="text-lg sm:text-xl font-semibold text-blue-900 mb-2"
+            >
               Il Nostro Team
             </h3>
             <p className="text-gray-700">
@@ -72,7 +76,10 @@ const ChiSiamo = () => {
             aria-labelledby="innovation-title"
           >
             <RocketLaunchIcon className="w-12 h-12 text-blue-900 mb-4" />
-            <h3 id="innovation-title" className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
+            <h3
+              id="innovation-title"
+              className="text-lg sm:text-xl font-semibold text-blue-900 mb-2"
+            >
               Innovazione Tecnologica
             </h3>
             <p className="text-gray-700">
@@ -87,7 +94,10 @@ const ChiSiamo = () => {
             aria-labelledby="mission-title"
           >
             <LightBulbIcon className="w-12 h-12 text-blue-900 mb-4" />
-            <h3 id="mission-title" className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
+            <h3
+              id="mission-title"
+              className="text-lg sm:text-xl font-semibold text-blue-900 mb-2"
+            >
               La Nostra Missione
             </h3>
             <p className="text-gray-700">

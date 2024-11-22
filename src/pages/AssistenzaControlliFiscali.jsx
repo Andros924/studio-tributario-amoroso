@@ -8,7 +8,9 @@ const AssistenzaControlliFiscali = () => {
     <div className="bg-gray-100 min-h-screen">
       {/* SEO Metadata */}
       <Helmet>
-        <title>Assistenza Controlli Fiscali | Supporto Professionale per Aziende</title>
+        <title>
+          Assistenza Controlli Fiscali | Supporto Professionale per Aziende
+        </title>
         <meta
           name="description"
           content="Scopri come affrontare i controlli fiscali con il supporto di esperti. Offriamo assistenza per comunicazioni, ispezioni, contenziosi e documentazione fiscale."
@@ -84,10 +86,11 @@ const AssistenzaControlliFiscali = () => {
               Preparazione e Presentazione della Documentazione
             </h3>
             <p className="text-gray-700">
-              Supportiamo nella raccolta e presentazione dei documenti richiesti,
-              inclusi bilanci, registri contabili e fatture. La nostra
-              assistenza garantisce che ogni documento sia preparato correttamente
-              e consegnato nei tempi richiesti, riducendo il rischio di sanzioni.
+              Supportiamo nella raccolta e presentazione dei documenti
+              richiesti, inclusi bilanci, registri contabili e fatture. La
+              nostra assistenza garantisce che ogni documento sia preparato
+              correttamente e consegnato nei tempi richiesti, riducendo il
+              rischio di sanzioni.
             </p>
           </article>
 

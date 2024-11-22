@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { articoliEvidenza } from "../components/Data";
 
-// Importazione dinamica delle immagini
+// Dynamic image imports
 import carousel1 from "../assets/images/carousel-1.jpg";
 import carousel2 from "../assets/images/carousel-2.jpg";
 import carousel3 from "../assets/images/carousel-3.jpg";
@@ -43,10 +43,12 @@ const Home = () => {
 
   const handleAcceptCookies = () => {
     setShowCookieBanner(false);
+    localStorage.setItem('cookiesAccepted', 'true');
   };
 
   const handleRejectCookies = () => {
     setShowCookieBanner(false);
+    localStorage.setItem('cookiesRejected', 'true');
   };
 
   const servizi = [
@@ -54,74 +56,58 @@ const Home = () => {
     { nome: "Dichiarazione dei redditi", path: "/dichiarazione-redditi" },
     { nome: "Pianificazione fiscale", path: "/pianificazione-fiscale" },
     { nome: "Contabilità", path: "/contabilita-aziendale" },
-    {
-      nome: "Assistenza in caso di controlli fiscali",
-      path: "/assistenza-controlli",
-    },
+    { nome: "Assistenza controlli fiscali", path: "/assistenza-controlli" },
     { nome: "Registrazioni preliminari", path: "/registrazione-preliminare" },
-    {
-      nome: "Stesura e Registrazione Contratto di Locazione",
-      path: "/contratto-locazione",
-    },
+    { nome: "Stesura Contratto di Locazione", path: "/contratto-locazione" },
     { nome: "Successioni", path: "/successioni-servizio" },
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen relative">
       <Helmet>
         <title>Soluzioni Fiscali su Misura a Palermo | Assistenza Fiscale</title>
-        <meta
-          name="description"
-          content="Naviga nel complesso mondo fiscale con i nostri esperti a Palermo. Offriamo consulenza fiscale, dichiarazioni dei redditi, e pianificazione fiscale personalizzata."
-        />
-        <meta
-          name="keywords"
-          content="consulenza fiscale Palermo, dichiarazione redditi, pianificazione fiscale, assistenza fiscale Palermo, servizi contabili"
-        />
+        <meta name="description" content="Naviga nel complesso mondo fiscale con i nostri esperti a Palermo. Offriamo consulenza fiscale, dichiarazioni dei redditi, e pianificazione fiscale personalizzata." />
+        <meta name="keywords" content="consulenza fiscale Palermo, dichiarazione redditi, pianificazione fiscale, assistenza fiscale Palermo, servizi contabili" />
         <meta name="author" content="Your Company Name" />
         <link rel="canonical" href="https://studiofiscaleamoroso.com/" />
       </Helmet>
 
-      {/* Cookie Banner */}
+      {/* Responsive Cookie Banner */}
       {showCookieBanner && (
-        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-4 px-6 flex justify-between items-center">
-          <p className="text-sm">
-            Utilizziamo i cookie per migliorare l'esperienza utente. Per saperne
-            di più, consulta la nostra{" "}
-            <Link
-              to="/privacy"
-              className="underline text-blue-400 hover:text-blue-500"
-            >
-              Privacy Policy
-            </Link>{" "}
-            e{" "}
-            <Link
-              to="/terms"
-              className="underline text-blue-400 hover:text-blue-500"
-            >
-              Termini e Condizioni
-            </Link>
-            .
-          </p>
-          <div className="space-x-4">
-            <button
-              onClick={handleAcceptCookies}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400"
-            >
-              Accetta
-            </button>
-            <button
-              onClick={handleRejectCookies}
-              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500"
-            >
-              Rifiuta
-            </button>
+        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-4 z-50">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <p className="text-sm text-center md:text-left flex-grow md:mr-4">
+              Utilizziamo i cookie per migliorare l'esperienza utente. Per saperne
+              di più, consulta la nostra{" "}
+              <Link to="/privacy" className="underline text-blue-400 hover:text-blue-500">
+                Privacy Policy
+              </Link>{" "}
+              e{" "}
+              <Link to="/terms" className="underline text-blue-400 hover:text-blue-500">
+                Termini e Condizioni
+              </Link>
+              .
+            </p>
+            <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full md:w-auto">
+              <button
+                onClick={handleAcceptCookies}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400 w-full md:w-auto mb-2 md:mb-0"
+              >
+                Accetta
+              </button>
+              <button
+                onClick={handleRejectCookies}
+                className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500 w-full md:w-auto"
+              >
+                Rifiuta
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Modern Carousel */}
-      <div className="relative w-full h-[50vh] overflow-hidden">
+      {/* Responsive Carousel */}
+      <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] overflow-hidden">
         {images.map((image, index) => (
           <div
             key={index}
@@ -168,24 +154,22 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-blue-500 text-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
-          <div className="lg:w-1/2">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center sm:text-left">
+      <section className="bg-blue-500 text-white py-12 md:py-20">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+          <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Soluzioni Fiscali su Misura a Palermo
             </h1>
-            <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-center sm:text-left">
+            <p className="text-lg md:text-xl mb-6">
               Naviga nel complesso mondo fiscale con i nostri esperti a Palermo,
               pronti a fornirti assistenza personalizzata.
             </p>
-            <div className="text-center sm:text-left">
-              <Link
-                to="/contatti"
-                className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
-              >
-                Richiedi una Consulenza
-              </Link>
-            </div>
+            <Link
+              to="/contatti"
+              className="inline-block bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-100 transition duration-300"
+            >
+              Richiedi una Consulenza
+            </Link>
           </div>
           <div className="lg:w-1/2 mt-8 lg:mt-0">
             <img
@@ -198,12 +182,12 @@ const Home = () => {
       </section>
 
       {/* Servizi Section */}
-      <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-900 mb-8 sm:mb-12">
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-8">
             I Nostri Servizi
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {servizi.map((servizio, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <CheckIcon className="w-8 h-8 text-blue-500 mb-4" />
@@ -221,12 +205,12 @@ const Home = () => {
       </section>
 
       {/* Articoli in Evidenza Section */}
-      <section className="bg-white py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-900 mb-8 sm:mb-12">
+      <section className="bg-white py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-8">
             Articoli in Evidenza
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {articoliEvidenza.map((articolo) => (
               <div key={articolo.id} className="bg-gray-100 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-2">
@@ -246,18 +230,17 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-500 text-white py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">
+      <section className="bg-blue-500 text-white py-12 md:py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Hai bisogno di assistenza fiscale?
           </h2>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8">
-            I nostri esperti sono pronti ad aiutarti con soluzioni su misura per
-            te.
+          <p className="text-lg md:text-xl mb-6">
+            I nostri esperti sono pronti ad aiutarti con soluzioni su misura per te.
           </p>
           <Link
             to="/contatti"
-            className="bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
+            className="inline-block bg-white text-blue-900 font-bold py-3 px-6 rounded-full hover:bg-blue-100 transition duration-300"
           >
             Contattaci Ora
           </Link>

@@ -16,7 +16,10 @@ const RegistrazionePreliminare = () => {
           name="keywords"
           content="registrazione preliminare, compromesso di vendita, contratto preliminare, imposte registro"
         />
-        <link rel="canonical" href="https://studiofiscaleamoroso.com/registrazione-preliminare" />
+        <link
+          rel="canonical"
+          href="https://studiofiscaleamoroso.com/registrazione-preliminare"
+        />
       </Helmet>
 
       {/* Hero Section */}
