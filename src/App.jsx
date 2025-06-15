@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/Privacy";
 import TermsConditions from "./pages/Terms";
 import RegistrazionePreliminare from "./pages/RegistrazionePreliminare";
+import RegistrazioneAgenzia from "./pages/RegistrazioneAgenzia";
 import SuccessioniServizio from "./pages/SuccessioniServizio";
 import ConsulenzaFiscale from "./pages/ConsulenzaFiscale";
 import DichiarazioneRedditi from "./pages/DichiarazioneRedditi";
@@ -37,6 +38,10 @@ function App() {
         <Route
           path="/registrazione-preliminare"
           element={<RegistrazionePreliminare />}
+        />
+        <Route
+          path="/registrazione-agenzia"
+          element={<RegistrazioneAgenzia />}
         />
         <Route path="/successioni-servizio" element={<SuccessioniServizio />} />
         <Route path="/consulenza-fiscale" element={<ConsulenzaFiscale />} />
