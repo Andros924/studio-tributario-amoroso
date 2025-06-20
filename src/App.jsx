@@ -19,7 +19,6 @@ import PianificazioneFiscale from "./pages/PianificazioneFiscale";
 import ContabilitaFiscale from "./pages/ContabilitaFiscale";
 import AssistenzaControlliFiscali from "./pages/AssistenzaControlliFiscali";
 import ContrattoLocazione from "./pages/ContrattoLocazione";
-import ConvertitorePdf from "./pages/ConvertitorePdf";
 
 function App() {
   return (
@@ -55,7 +54,6 @@ function App() {
           element={<AssistenzaControlliFiscali />}
         />
         <Route path="/contratto-locazione" element={<ContrattoLocazione />} />
-        <Route path="/convertitore-pdf" element={<ConvertitorePdf />} />
       </Routes>
       <Footer />
     </>

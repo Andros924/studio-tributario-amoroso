@@ -102,12 +102,6 @@ const Navbar = () => {
           >
             Pubblicazioni
           </Link>
-          <Link
-            to="/convertitore-pdf"
-            className="block text-gray-200 hover:text-gray-400 py-2 md:py-0 bg-blue-700 md:bg-blue-600 px-3 rounded-md"
-          >
-            Convertitore PDF
-          </Link>
         </div>
       </div>
     </nav>

@@ -93,17 +93,6 @@ const Servizi = () => {
       ],
       path: "/successioni-servizio",
     },
-    {
-      titolo: "Convertitore PDF a Excel",
-      descrizione:
-        "Servizio digitale per convertire i tuoi estratti conto PDF in formato Excel, organizzando automaticamente i dati per una gestione più semplice.",
-      vantaggi: [
-        "Conversione automatica dei dati bancari",
-        "Organizzazione in colonne strutturate (Data, Descrizione, Importi)",
-        "Download immediato del file Excel",
-      ],
-      path: "/convertitore-pdf",
-    },
   ];
 
   return (
@@ -116,7 +105,7 @@ const Servizi = () => {
         />
         <meta
           name="keywords"
-          content="servizi fiscali, consulenza fiscale, dichiarazione redditi, pianificazione fiscale, assistenza fiscale, convertitore PDF Excel"
+          content="servizi fiscali, consulenza fiscale, dichiarazione redditi, pianificazione fiscale, assistenza fiscale"
         />
         <link rel="canonical" href="https://studiofiscaleamoroso.com/servizi" />
       </Helmet>
@@ -155,10 +144,7 @@ const Servizi = () => {
                   to={servizio.path || "/contatti"}
                   className="text-blue-500 font-semibold hover:text-blue-900 transition duration-300 flex items-center justify-center md:justify-start"
                 >
-                  {servizio.path === "/convertitore-pdf" 
-                    ? "Usa il convertitore" 
-                    : "Richiedi una consulenza per questo servizio"
-                  }
+                  Richiedi una consulenza per questo servizio
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Link>
               </div>
