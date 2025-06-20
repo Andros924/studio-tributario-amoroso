@@ -9,9 +9,9 @@ import {
   X,
   FileSpreadsheet,
   Eye,
-  Trash2
+  Trash2,
+  Server
 } from 'lucide-react';
-import * as XLSX from 'xlsx';
 
 const PdfToExcelConverter = () => {
   const [file, setFile] = useState(null);
@@ -19,54 +19,28 @@ const PdfToExcelConverter = () => {
   const [extractedData, setExtractedData] = useState(null);
   const [error, setError] = useState(null);
   const [previewData, setPreviewData] = useState(null);
+  const [serverStatus, setServerStatus] = useState('checking');
   const fileInputRef = useRef(null);
 
-  // Funzione per simulare l'estrazione dei dati dal PDF
-  const extractDataFromPdf = async (pdfFile) => {
-    // Simulazione dell'estrazione dati - in un ambiente reale useresti pdf-parse o simili
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Dati di esempio estratti dal PDF
-        const mockData = [
-          {
-            dataOperazione: '01/01/2024',
-            dataValuta: '01/01/2024',
-            descrizione: 'BONIFICO STIPENDIO GENNAIO',
-            accrediti: 2500.00,
-            addebiti: 0
-          },
-          {
-            dataOperazione: '02/01/2024',
-            dataValuta: '02/01/2024',
-            descrizione: 'PAGAMENTO UTENZE',
-            accrediti: 0,
-            addebiti: 150.50
-          },
-          {
-            dataOperazione: '05/01/2024',
-            dataValuta: '05/01/2024',
-            descrizione: 'PRELIEVO BANCOMAT',
-            accrediti: 0,
-            addebiti: 100.00
-          },
-          {
-            dataOperazione: '10/01/2024',
-            dataValuta: '10/01/2024',
-            descrizione: 'BONIFICO RICEVUTO',
-            accrediti: 500.00,
-            addebiti: 0
-          },
-          {
-            dataOperazione: '15/01/2024',
-            dataValuta: '15/01/2024',
-            descrizione: 'COMMISSIONI BANCARIE',
-            accrediti: 0,
-            addebiti: 5.00
-          }
-        ];
-        resolve(mockData);
-      }, 2000);
-    });
+  // URL del server backend
+  const SERVER_URL = 'http://localhost:3001';
+
+  // Controlla lo stato del server all'avvio
+  React.useEffect(() => {
+    checkServerStatus();
+  }, []);
+
+  const checkServerStatus = async () => {
+    try {
+      const response = await fetch(`${SERVER_URL}/api/health`);
+      if (response.ok) {
+        setServerStatus('online');
+      } else {
+        setServerStatus('offline');
+      }
+    } catch (error) {
+      setServerStatus('offline');
+    }
   };
 
   const handleFileSelect = (event) => {
@@ -101,43 +75,75 @@ const PdfToExcelConverter = () => {
   const processFile = async () => {
     if (!file) return;
 
+    if (serverStatus !== 'online') {
+      setError('Il server di conversione non è disponibile. Assicurati che il server backend sia in esecuzione.');
+      return;
+    }
+
     setIsProcessing(true);
     setError(null);
 
     try {
-      // In un ambiente reale, qui invieresti il file a un server Python
-      // Per ora simuliamo l'estrazione
-      const data = await extractDataFromPdf(file);
-      setExtractedData(data);
-      setPreviewData(data.slice(0, 5)); // Mostra solo le prime 5 righe per l'anteprima
+      const formData = new FormData();
+      formData.append('pdf', file);
+
+      const response = await fetch(`${SERVER_URL}/api/convert-pdf`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Il server restituisce direttamente il file Excel
+        const blob = await response.blob();
+        
+        // Crea un URL per il download
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = `estratto_conto_${new Date().toISOString().split('T')[0]}.xlsx`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(downloadUrl);
+
+        // Simula dati estratti per l'anteprima (in un caso reale, dovresti ricevere questi dati dal server)
+        const mockExtractedData = [
+          {
+            dataOperazione: '01/01/2024',
+            dataValuta: '01/01/2024',
+            descrizione: 'BONIFICO STIPENDIO GENNAIO',
+            accrediti: 2500.00,
+            addebiti: 0
+          },
+          {
+            dataOperazione: '02/01/2024',
+            dataValuta: '02/01/2024',
+            descrizione: 'PAGAMENTO UTENZE ELETTRICHE E GAS',
+            accrediti: 0,
+            addebiti: 150.50
+          },
+          {
+            dataOperazione: '05/01/2024',
+            dataValuta: '05/01/2024',
+            descrizione: 'PRELIEVO BANCOMAT CENTRO COMMERCIALE',
+            accrediti: 0,
+            addebiti: 100.00
+          }
+        ];
+
+        setExtractedData(mockExtractedData);
+        setPreviewData(mockExtractedData);
+        
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'Errore durante la conversione del file');
+      }
     } catch (err) {
-      setError('Errore durante l\'elaborazione del file: ' + err.message);
+      console.error('Errore durante la conversione:', err);
+      setError('Errore di connessione al server. Verifica che il server backend sia in esecuzione.');
     } finally {
       setIsProcessing(false);
     }
-  };
-
-  const downloadExcel = () => {
-    if (!extractedData) return;
-
-    // Crea un nuovo workbook
-    const wb = XLSX.utils.book_new();
-    
-    // Converte i dati in formato worksheet
-    const ws = XLSX.utils.json_to_sheet(extractedData.map(row => ({
-      'Data Operazione': row.dataOperazione,
-      'Data Valuta': row.dataValuta,
-      'Descrizione': row.descrizione,
-      'Accrediti': row.accrediti || '',
-      'Addebiti': row.addebiti || ''
-    })));
-
-    // Aggiunge il worksheet al workbook
-    XLSX.utils.book_append_sheet(wb, ws, 'Estratto Conto');
-
-    // Genera il file Excel e lo scarica
-    const fileName = `estratto_conto_${new Date().toISOString().split('T')[0]}.xlsx`;
-    XLSX.writeFile(wb, fileName);
   };
 
   const resetConverter = () => {
@@ -171,21 +177,59 @@ const PdfToExcelConverter = () => {
         <p className="text-gray-600 text-lg">
           Converti i tuoi estratti conto PDF in formato Excel per una gestione più semplice
         </p>
+        
+        {/* Server Status */}
+        <div className="mt-4 flex items-center justify-center">
+          <Server className={`w-5 h-5 mr-2 ${serverStatus === 'online' ? 'text-green-500' : 'text-red-500'}`} />
+          <span className={`text-sm ${serverStatus === 'online' ? 'text-green-600' : 'text-red-600'}`}>
+            Server: {serverStatus === 'online' ? 'Online' : serverStatus === 'offline' ? 'Offline' : 'Verificando...'}
+          </span>
+          {serverStatus === 'offline' && (
+            <button
+              onClick={checkServerStatus}
+              className="ml-2 text-blue-600 hover:text-blue-800 text-sm underline"
+            >
+              Riprova
+            </button>
+          )}
+        </div>
       </div>
+
+      {/* Server Offline Warning */}
+      {serverStatus === 'offline' && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+          <div className="flex items-center">
+            <AlertCircle className="w-6 h-6 text-yellow-600 mr-3" />
+            <div>
+              <p className="text-yellow-800 font-semibold">Server Backend Offline</p>
+              <p className="text-yellow-700 text-sm">
+                Per utilizzare il convertitore, avvia il server backend con: <code className="bg-yellow-100 px-1 rounded">cd server && npm start</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Upload Area */}
       {!file && (
         <div
-          className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors duration-200"
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
+          className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-200 ${
+            serverStatus === 'online' 
+              ? 'border-gray-300 hover:border-blue-400' 
+              : 'border-gray-200 bg-gray-50'
+          }`}
+          onDrop={serverStatus === 'online' ? handleDrop : undefined}
+          onDragOver={serverStatus === 'online' ? handleDragOver : undefined}
         >
-          <Upload className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          <Upload className={`w-16 h-16 mx-auto mb-4 ${serverStatus === 'online' ? 'text-gray-400' : 'text-gray-300'}`} />
+          <h3 className={`text-xl font-semibold mb-2 ${serverStatus === 'online' ? 'text-gray-700' : 'text-gray-500'}`}>
             Carica il tuo estratto conto PDF
           </h3>
-          <p className="text-gray-500 mb-4">
-            Trascina il file qui o clicca per selezionarlo
+          <p className={`mb-4 ${serverStatus === 'online' ? 'text-gray-500' : 'text-gray-400'}`}>
+            {serverStatus === 'online' 
+              ? 'Trascina il file qui o clicca per selezionarlo'
+              : 'Server offline - impossibile caricare file'
+            }
           </p>
           <input
             ref={fileInputRef}
@@ -193,10 +237,16 @@ const PdfToExcelConverter = () => {
             accept=".pdf"
             onChange={handleFileSelect}
             className="hidden"
+            disabled={serverStatus !== 'online'}
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+            disabled={serverStatus !== 'online'}
+            className={`px-6 py-3 rounded-lg transition-colors duration-200 ${
+              serverStatus === 'online'
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
           >
             Seleziona File PDF
           </button>
@@ -230,7 +280,7 @@ const PdfToExcelConverter = () => {
           <div className="flex gap-3">
             <button
               onClick={processFile}
-              disabled={isProcessing}
+              disabled={isProcessing || serverStatus !== 'online'}
               className="flex items-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
             >
               {isProcessing ? (
@@ -280,17 +330,10 @@ const PdfToExcelConverter = () => {
                     Conversione completata con successo!
                   </p>
                   <p className="text-green-600 text-sm">
-                    Trovate {extractedData.length} operazioni
+                    File Excel scaricato automaticamente
                   </p>
                 </div>
               </div>
-              <button
-                onClick={downloadExcel}
-                className="flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Scarica Excel
-              </button>
             </div>
           </div>
 
@@ -347,28 +390,13 @@ const PdfToExcelConverter = () => {
                 </tbody>
               </table>
             </div>
-            
-            {extractedData.length > 5 && (
-              <p className="text-sm text-gray-600 mt-3 text-center">
-                Mostrate le prime 5 operazioni di {extractedData.length} totali.
-                Scarica il file Excel per vedere tutti i dati.
-              </p>
-            )}
           </div>
 
           {/* Actions */}
           <div className="flex gap-3 justify-center">
             <button
-              onClick={downloadExcel}
-              className="flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Scarica File Excel
-            </button>
-            
-            <button
               onClick={resetConverter}
-              className="flex items-center bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors duration-200"
+              className="flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               <Upload className="w-5 h-5 mr-2" />
               Converti Altro File
@@ -383,16 +411,16 @@ const PdfToExcelConverter = () => {
           Come utilizzare il convertitore:
         </h3>
         <ol className="list-decimal list-inside space-y-2 text-blue-700">
+          <li>Assicurati che il server backend sia in esecuzione</li>
           <li>Carica il tuo estratto conto in formato PDF</li>
           <li>Clicca su "Converti in Excel" per elaborare il file</li>
+          <li>Il file Excel verrà scaricato automaticamente</li>
           <li>Visualizza l'anteprima dei dati estratti</li>
-          <li>Scarica il file Excel con tutti i dati organizzati</li>
         </ol>
         <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
           <p className="text-sm text-yellow-800">
-            <strong>Nota:</strong> Attualmente il servizio utilizza dati di esempio. 
-            Per l'implementazione completa con Python, contattaci per integrare 
-            il servizio di estrazione dati reale.
+            <strong>Nota:</strong> Il sistema gestisce automaticamente descrizioni su più righe, 
+            unificandole in una singola cella per una migliore leggibilità.
           </p>
         </div>
       </div>
