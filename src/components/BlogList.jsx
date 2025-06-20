@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { Calendar, User, Clock, Search, Filter, Tag, ArrowRight } from "lucide-react";
 import { articoliEvidenza } from "./Data";
 
 const BlogList = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
+  const [sortBy, setSortBy] = useState("newest");
+
+  // Estrai tutti i tag unici
+  const allTags = [...new Set(articoliEvidenza.flatMap(article => article.tags || []))];
+
+  // Filtra e ordina gli articoli
+  const filteredArticles = articoliEvidenza
+    .filter(article => {
+      const matchesSearch = 
+        article.titolo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.autore.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesTag = !selectedTag || (article.tags && article.tags.includes(selectedTag));
+      
+      return matchesSearch && matchesTag;
+    })
+    .sort((a, b) => {
+      if (sortBy === "newest") {
+        return new Date(b.data) - new Date(a.data);
+      } else if (sortBy === "oldest") {
+        return new Date(a.data) - new Date(b.data);
+      } else if (sortBy === "readTime") {
+        return a.tempoLettura - b.tempoLettura;
+      }
+      return 0;
+    });
+
   return (
-    <div className="container mx-auto py-10">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <Helmet>
         <title>Articoli Fiscali | Consigli e Guide Fiscali</title>
         <meta
@@ -20,44 +51,224 @@ const BlogList = () => {
         <link rel="canonical" href="https://studiofiscaleamoroso.com/blog" />
       </Helmet>
 
-      <h1 className="text-4xl font-bold text-center text-gray-700 mb-8">
-        Articoli Fiscali
-      </h1>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {articoliEvidenza.length > 0 ? (
-          articoliEvidenza.map((post) => (
-            <div key={post.id} className="bg-white shadow-lg rounded-lg p-6">
-              {post.immagine && (
-                <div className="w-full h-48">
-                  <img
-                    src={post.immagine}
-                    alt={post.titolo}
-                    className="object-cover w-full h-full rounded-lg"
-                  />
-                </div>
-              )}
-              <h2 className="text-2xl font-semibold text-blue-900 mt-4 mb-4">
-                {post.titolo}
-              </h2>
-              <p className="text-gray-700 mb-4">
-                {post.excerpt.length > 100
-                  ? `${post.excerpt.substring(0, 100)}...`
-                  : post.excerpt}
-              </p>
-              <Link
-                to={`/blog/${post.slug}`}
-                className="text-blue-500 hover:text-blue-700 font-semibold hover:underline"
-              >
-                Leggi di più
-              </Link>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Il Nostro Blog
+              <span className="block text-blue-200 text-3xl md:text-4xl font-normal mt-2">
+                Fiscale
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+              Approfondimenti, guide pratiche e aggiornamenti normativi 
+              per navigare nel mondo della fiscalità con sicurezza
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center bg-blue-800/50 px-4 py-2 rounded-full">
+                <Calendar className="w-4 h-4 mr-2" />
+                Aggiornamenti settimanali
+              </div>
+              <div className="flex items-center bg-blue-800/50 px-4 py-2 rounded-full">
+                <User className="w-4 h-4 mr-2" />
+                Esperti qualificati
+              </div>
+              <div className="flex items-center bg-blue-800/50 px-4 py-2 rounded-full">
+                <Tag className="w-4 h-4 mr-2" />
+                Guide pratiche
+              </div>
             </div>
-          ))
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-12">
+        {/* Filtri e Ricerca */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-12 border border-gray-100">
+          <div className="flex flex-col lg:flex-row gap-6 items-center">
+            {/* Barra di ricerca */}
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Cerca negli articoli..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              />
+            </div>
+
+            {/* Filtro per tag */}
+            <div className="flex items-center gap-2">
+              <Filter className="w-5 h-5 text-gray-500" />
+              <select
+                value={selectedTag}
+                onChange={(e) => setSelectedTag(e.target.value)}
+                className="px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white min-w-[150px]"
+              >
+                <option value="">Tutti i tag</option>
+                {allTags.map(tag => (
+                  <option key={tag} value={tag}>{tag}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Ordinamento */}
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500 text-sm">Ordina per:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              >
+                <option value="newest">Più recenti</option>
+                <option value="oldest">Meno recenti</option>
+                <option value="readTime">Tempo di lettura</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Statistiche */}
+          <div className="mt-6 pt-6 border-t border-gray-100">
+            <div className="flex flex-wrap gap-6 text-sm text-gray-600">
+              <span>
+                <strong className="text-blue-600">{filteredArticles.length}</strong> articoli trovati
+              </span>
+              <span>
+                <strong className="text-blue-600">{allTags.length}</strong> categorie disponibili
+              </span>
+              <span>
+                Ultimo aggiornamento: <strong className="text-blue-600">Ottobre 2024</strong>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Griglia degli articoli */}
+        {filteredArticles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredArticles.map((post) => (
+              <article 
+                key={post.id} 
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200"
+              >
+                {/* Immagine */}
+                {post.immagine && (
+                  <div className="relative overflow-hidden h-48">
+                    <img
+                      src={post.immagine}
+                      alt={post.titolo}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Badge tempo di lettura */}
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700 flex items-center">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {post.tempoLettura} min
+                    </div>
+                  </div>
+                )}
+
+                <div className="p-6">
+                  {/* Metadata */}
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {post.data}
+                    </div>
+                    <div className="flex items-center">
+                      <User className="w-4 h-4 mr-1" />
+                      {post.autore}
+                    </div>
+                  </div>
+
+                  {/* Titolo */}
+                  <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+                    {post.titolo}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+                    {post.excerpt.length > 120
+                      ? `${post.excerpt.substring(0, 120)}...`
+                      : post.excerpt}
+                  </p>
+
+                  {/* Tags */}
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.slice(0, 2).map((tag, index) => (
+                        <span
+                          key={index}
+                          className="bg-blue-50 text-blue-600 px-2 py-1 rounded-lg text-xs font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {post.tags.length > 2 && (
+                        <span className="text-gray-400 text-xs">
+                          +{post.tags.length - 2} altri
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Link */}
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group-hover:gap-2 transition-all duration-200"
+                  >
+                    Leggi l'articolo
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         ) : (
-          <p className="text-center text-gray-500">
-            Nessun articolo disponibile.
-          </p>
+          <div className="text-center py-16">
+            <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md mx-auto">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-8 h-8 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                Nessun articolo trovato
+              </h3>
+              <p className="text-gray-500 mb-4">
+                Prova a modificare i filtri di ricerca o esplora tutti gli articoli.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchTerm("");
+                  setSelectedTag("");
+                }}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
+                Mostra tutti gli articoli
+              </button>
+            </div>
+          </div>
         )}
+
+        {/* Newsletter Signup */}
+        <div className="mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center">
+          <h3 className="text-2xl font-bold mb-4">
+            Rimani aggiornato sulle novità fiscali
+          </h3>
+          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            Ricevi i nostri articoli più recenti e gli aggiornamenti normativi 
+            direttamente nella tua casella di posta elettronica.
+          </p>
+          <Link
+            to="/contatti"
+            className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
+          >
+            Contattaci per maggiori informazioni
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Link>
+        </div>
       </div>
     </div>
   );
